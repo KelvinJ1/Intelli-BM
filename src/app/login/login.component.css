@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+*,*::before, *::after{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Nunito', sans-serif;
+    outline: 0;
+}
+
+section{
+
+ 
+position: relative;
+width: 100vw;
+height: 100vh;
+display: flex;
+
+}
+
+section .imgCard{
+
+position: relative;
+width: 50vw;
+height: 100vh;
+
+
+}
+
+
+section .wave{
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+
+}
+
+section .logo{
+
+    
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    width: 60%;
+    height: 20%;
+
+}
+
+section p{
+
+    position: absolute;
+    top: 80%;
+    left: 10%;
+    width: 80%;
+    text-align: center;
+    color: black;
+    font-size:large;
+    font-weight: 100;
+
+
+}
+section .loginCard{
+
+display: flex;
+justify-content: center;
+align-items: center;
+width: 50%;
+height: 100%;
+background-color: #4E4D4D;
+
+}
+
+section .loginCard .formBx{
+width: 50%;
+
+}
+
+section .loginCard .formBx{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.515);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    width: 50%;
+    height: 60%;
+
+}   
+
+section .loginCard .formBx  .inputBx{
+
+    margin-bottom: 20px;
+
+}
+
+
+section .loginCard .formBx .inputBx input{
+
+   
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    font-weight: 500;
+    border: 1px solid #EB5D22;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #4E4D4D;
+    border-radius: 15px;
+    }
+
+section .loginCard .formBx .inputBx input[type="submit"]{
+
+        background: #EB5D22;
+        color: white;
+        outline: none;
+        border: none;
+        font-weight:bold;
+        cursor: pointer;
+
+    }
+
+    section .loginCard .formBx .inputBx input[type="submit"]:hover{
+
+
+        background: #da5319 ;
+    }
+
+    section .loginCard .formBx .inputBx a{
+
+        color: white;
+        font-weight: 200;
+        font-size: 12px;
+   
+    }
+
