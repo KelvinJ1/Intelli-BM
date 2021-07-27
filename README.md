@@ -10,6 +10,6 @@ https://sharing.clickup.com/t/h/5q9khx/C6ZFDE1FYEAID0E
 SPRINT #2:
 https://drive.google.com/file/d/1Pnw_nxAL0LLtwipoM2_HHjIufC5h55kr/view
 
-SPRINT #3
+SPRINT #3:
 https://docs.google.com/document/d/1URiHfoMSRFwvL0IrFTP5vBJT-efeSL2b/edit
 
