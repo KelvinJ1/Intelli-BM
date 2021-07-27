@@ -1,10 +1,11 @@
-const express= require("express");
+
 const Users = require("../models/users");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
-const auth = require("../middleware/auth");
-
+const { Content } = require("@angular/compiler/src/render3/r3_ast");
+const { Type } = require("@angular/compiler/src/core");
+const { application, json } = require("express");
+const users = require("../models/users");
 
 const key = "probando__::5896"
 //objeto usuario
@@ -12,10 +13,13 @@ const UsersController = {}
 
 
                 //get (listar usuarios)
-                UsersController.getUsers= (req,res)=>{
-                };
+                UsersController.getUsers= async(req,res)=>{
 
-            
+                   const mostrar= await  Users.find()
+                   res.send(mostrar)
+
+
+                };
 
                 //post (crear usuarios)
                     
@@ -32,7 +36,7 @@ const UsersController = {}
                 };
             
 
-                //get (trae un usuario)
+                //get (trae un usuario para login)
                 UsersController.getUser= async(req,res)=>{
                     const {name, password}=req.body;
                     const user =  await Users.findOne({name});
@@ -42,22 +46,45 @@ const UsersController = {}
 
                     const token = jwt.sign({_id: user._id}, key);
                     return res.status(200).json({token});                  
-                };
-
-
-              auth();
-
+                };              
                 //put (editar usuario)
-                UsersController.editUser= (req,res)=>{
+                UsersController.editUser= async(req,res)=>{
+
+                    //encunetra usuario por el Id y edita los campos enviados en el body
+
+                await Users.findByIdAndUpdate(req.params._id, req.body);         
+
+                    res.status(200).json("Usuario actualizado")
+
+            
                 };
 
 
                 //delete (listar usuarios)
-                UsersController.deleteUser= (req,res)=>{
-                };
-                
-                
-               
+                UsersController.deleteUser= async(req,res)=>{
+
+                    await Users.findOneAndDelete(req.params._id);
+                    res.json({status: "usuario eliminado"})
+
+
+                };                                        
+
+                  //autenticación (middleware)
+                UsersController.verifyToken = (req,res, next) => {                  
+                    if (!req.headers.authorization)
+                    return res.status(401).send("unauthorized request");
+                    
+                        const token = req.headers.authorization.split(" ")[1];                 
+                        if (token == null)
+                        return res.status(401).send("unauthorized request");
+                    
+                        const payload =  jwt.verify(token, key);
+                        console.log(payload);
+                    
+                        req.userId = payload._id;
+                        next();
+                    
+                }       
 
 
 

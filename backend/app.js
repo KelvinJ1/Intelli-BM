@@ -12,7 +12,13 @@ app.use(cors());
 // conexión a la DB
 mongoose.connect(
   "mongodb+srv://admin:MjGTXss8vqhQmqqS@cluster0.1feml.mongodb.net/IntelliDB?retryWrites=true&w=majority",
-  {useNewUrlParser: true, useUnifiedTopology: true}
+  {useNewUrlParser: true,
+     useUnifiedTopology: true,
+     useFindAndModify: false
+    }
+
+
+
   ).then(()=>{
     console.log("Conexión exitosa a DB")
 
