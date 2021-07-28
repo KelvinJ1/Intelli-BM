@@ -14,9 +14,8 @@ const UsersController = {}
 
                 //get (listar usuarios)
                 UsersController.getUsers= async(req,res)=>{
-
-                   const mostrar= await  Users.find()
-                   res.send(mostrar)
+                   const mostrar= await  Users.find();
+                   res.status(200).json(mostrar)
 
 
                 };
@@ -40,20 +39,18 @@ const UsersController = {}
                 UsersController.getUser= async(req,res)=>{
                     const {name, password}=req.body;
                     const user =  await Users.findOne({name});
-
                     if(!user) return res.send("acceso denegado, no se encontró tal usuario");
                     if(user.password !== password) return res.send("wrong password");
-
                     const token = jwt.sign({_id: user._id}, key);
                     return res.status(200).json({token});                  
-                };              
+                };     
+                
+                
+
                 //put (editar usuario)
                 UsersController.editUser= async(req,res)=>{
-
                     //encunetra usuario por el Id y edita los campos enviados en el body
-
-                await Users.findByIdAndUpdate(req.params._id, req.body);         
-
+                await Users.updateOne(req.params._id, req.body);         
                     res.status(200).json("Usuario actualizado")
 
             
