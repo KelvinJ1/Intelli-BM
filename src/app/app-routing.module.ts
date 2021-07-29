@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
 
 const routes: Routes = [
 { path: "",
@@ -11,9 +12,12 @@ pathMatch:"full"
 {
 path: "login", 
 component:LoginComponent
-}
+},
 
-
+{
+  path: "monitoring", 
+  component:SideMenuComponent
+  }
 
 
 ];

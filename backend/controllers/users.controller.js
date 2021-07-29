@@ -39,7 +39,7 @@ const UsersController = {}
                 UsersController.getUser= async(req,res)=>{
                     const {name, password}=req.body;
                     const user =  await Users.findOne({name});
-                    if(!user) return res.send("acceso denegado, no se encontró tal usuario");
+                    if(!user) return res.status(401).send("acceso denegado, no se encontró tal usuario");
                     if(user.password !== password) return res.send("wrong password");
                     const token = jwt.sign({_id: user._id}, key);
                     return res.status(200).json({token});                  

@@ -13,14 +13,16 @@
         
                 <div class="formBx">
 
-                    <form >
+                    <!-- cuando submit, ejecuta metodo SignIn  -->
+                    <form (submit)="signIn()">
 
                         <div class="inputBx">
-                            <input type="text" required placeholder="Username">
+                            <input type="text" [(ngModel)]="user.name" name="name" required placeholder="Username" autofocus>
                         </div>
 
                         <div class="inputBx">
-                            <input type="password" name="" id="" required placeholder="Password">
+                            <input autocomplete="off" type="password" [(ngModel)]="user.password" name="password" required placeholder="Password">
+                        
                         </div>
 
                         <div class="inputBx">
