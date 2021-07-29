@@ -13,5 +13,5 @@ ___
 
 ## [SPRINT #2:](https://drive.google.com/file/d/1Pnw_nxAL0LLtwipoM2_HHjIufC5h55kr/view) :file_folder: :white_check_mark:
 
-## [SPRINT #3:](https://docs.google.com/document/d/1URiHfoMSRFwvL0IrFTP5vBJT-efeSL2b/edit) :file_folder: :white_check_mark:
+## [SPRINT #3:](https://sharing.clickup.com/t/h/639k5x/DCR2Z5P75T8J9LL) :file_folder: :white_check_mark:
 
