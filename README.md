@@ -1,15 +1,17 @@
 # IntelliBM
 
-INTELLI-BM is a web application that allows companies to record and closely monitor how it is handled, where the budget is destined and where the company's 
+***INTELLI-BM is a web application that allows companies to record and closely monitor how it is handled, where the budget is destined and where the company's 
 funds come from. INTELLI-B M allows you to monitor, generate general reports, allocate funds/general budget in different business pockets, such as per diem, 
-business services, payroll, etc. Additionally, it has a management interface and assignment to the business payroll. 
+business services, payroll, etc. Additionally, it has a management interface and assignment to the business payroll.***
 
-## SPRINT #1:
-> https://sharing.clickup.com/t/h/5q9khx/C6ZFDE1FYEAID0E
+# ![](https://github.com/KelvinJ1/Intelli-BM/blob/master/src/assets/intelliLogo.png)
+___
+- #### *To acces the SPRINTS, click the respective links below :arrow_down: :arrow_down: :arrow_down:*
+___
+## [SPRINT #1:](https://sharing.clickup.com/t/h/5q9khx/C6ZFDE1FYEAID0E) :file_folder: :white_check_mark:
 
-## SPRINT #2:
-> https://drive.google.com/file/d/1Pnw_nxAL0LLtwipoM2_HHjIufC5h55kr/view
 
-## SPRINT #3:
-> https://docs.google.com/document/d/1URiHfoMSRFwvL0IrFTP5vBJT-efeSL2b/edit
+## [SPRINT #2:](https://drive.google.com/file/d/1Pnw_nxAL0LLtwipoM2_HHjIufC5h55kr/view) :file_folder: :white_check_mark:
+
+## [SPRINT #3:](https://docs.google.com/document/d/1URiHfoMSRFwvL0IrFTP5vBJT-efeSL2b/edit) :file_folder: :white_check_mark:
 
