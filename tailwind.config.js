@@ -12,7 +12,7 @@ module.exports = {
     theme: {
       extend: {},
     },
-    variants: {
+    variants: {backgroundColor:['hover','active', 'focus'],
       extend: {},
     },
     plugins: [require('@tailwindcss/aspect-ratio'),require('@tailwindcss/forms'),require('@tailwindcss/typography')],

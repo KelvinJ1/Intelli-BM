@@ -1,39 +1,57 @@
 <body >
-    <!-- both sides -->
-    <div class=" flex h-screen">
-        <!-- sidebar -->
-        <div class="bg-yellow-500 p-4 border-r w-80 border-gray-200">
+  <!-- both sides -->
+  <div class=" flex h-screen">
+      <!-- sidebar -->
+      <div class="bg-yellow-500 p-4 border-r w-80 border-gray-200">
 
-            <ul class="m-6">
-              <div><img src="../../assets/logo_negro.png" alt=""></div>
-               <li class="mb-20 ">
-                        <div class="mx-20 mb-6 bg-blue-100 rounded-full h-24 w-24 flex items-center justify-center m-0 p-0"></div> 
-                    <div class="px-2 bg-yellow-600 rounded-lg w-26"><p class="font-bold p-0 mt-3 flex text-white justify-self-center text center">Nombre asf</p></div>
-                    </li> 
+          <ul class="m-6">
 
-                <li class=" border-b py-2 px-4 rounded-lg hover:bg-yellow-600 mb-8 text-white flex"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg> Monitoreo</li>
+                <div class="ml-6 w-auto"><img src="../../assets/logo_negro.png" alt=""></div>
+         
+                
+                <li class="mb-20 ">
+                          <div class="font-semibold mx-20 mb-6 bg-blue-100 rounded-full h-24 w-24 flex items-center justify-center m-0 p-0"></div> 
+                          <div class="px-2 bg-opacity-50 bg-yellow-600 rounded-l w-26"><p class="font-bold p-0 mt-3 flex text-white justify-self-center text center">Nombre asf</p></div>
+                </li> 
+
+                <li class="font-semibold border-b-2 py-2 px-4 rounded-l hover:bg-yellow-400 active:bg-yellow-600 mb-8 text-white flex"> 
+                        <a routerLink="/monitoring" class="flex" >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg> Monitoreo
+                        </a>
+                </li>
+
+                <li class="font-semibold border-b-2 py-2 px-4  rounded-l hover:bg-yellow-400 active:bg-yellow-600 mb-8 text-white flex">
+                        <a  class="flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>Presupuesto
+                        </a>
+                </li>
+
+                <li class="font-semibold border-b-2 py-2 px-4 rounded-l hover:bg-yellow-400 active:bg-yellow-600 mb-8 text-white flex">
+                        <a class="flex">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                            </svg> Nómina
+                        </a>
+                </li>
+
+                <li class="font-semibold mt-60  shadow-md border-t-2 py-2 px-4 rounded-l  hover:bg-yellow-400 active:bg-yellow-600 text-white flex">
+                  <a class="flex">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                      </svg>Log out
+                  </a>
+                </li>
+
+          </ul>
 
 
-                <li class="border-b py-2 px-4  rounded-lg hover:bg-yellow-600 mb-8 text-white flex"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>Presupuesto</li>
+      </div>
 
-                <li class="border-b py-2 px-4 rounded-lg hover:bg-yellow-600 mb-8 text-white flex"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                  </svg> Nómina</li>
-
-                <li class="mt-60  shadow-md border-t border-b py-2 px-4 rounded-lg  hover:bg-yellow-600 text-white flex"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                  </svg>Log out</li>
-
-            </ul>
-
-
-        </div>
-
-    </div>
+  </div>
 
 
 
