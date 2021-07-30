@@ -3,7 +3,6 @@
 ***INTELLI-BM is a web application that allows companies to record and closely monitor how the budget is managed, what it is destined to be used for, and where the company's 
 funds come from. INTELLI-B M allows you to monitor, generate general reports as well as allocate funds/general budget into different business pockets (such as per diem, 
 business services, payroll, etc.).
-
 Additionally, it has a management interface and assignment to the business payroll.***
 
 # ![](https://github.com/KelvinJ1/Intelli-BM/blob/master/src/assets/intelliLogo.png)
