@@ -2,18 +2,24 @@
   <!-- both sides -->
   <div class=" flex h-screen">
       <!-- sidebar -->
-      <div class="bg-yellow-500 p-4 border-r w-80 border-gray-200">
+      <div class=" bg-yellow-500 p-4 border-r w-80 border-gray-200">
 
           <ul class="m-6">
 
                 <div class="ml-6 w-auto"><img src="../../assets/logo_negro.png" alt=""></div>
          
-                
+                <!-- PROFILE PIC -->
                 <li class="mb-20 ">
-                          <div class="font-semibold mx-20 mb-6 bg-blue-100 rounded-full h-24 w-24 flex items-center justify-center m-0 p-0"></div> 
-                          <div class="px-2 bg-opacity-50 bg-yellow-600 rounded-l w-26"><p class="font-bold p-0 mt-3 flex text-white justify-self-center text center">Nombre asf</p></div>
-                </li> 
+                          <div class="font-semibold mx-20 mb-6 bg-blue-100 rounded-full h-24 w-24 flex items-center justify-center p-0">
+                                  <img src="../../assets/avataaars.png" alt="Admin">
+                          </div> 
 
+                          <div class="px-2 bg-opacity-50 bg-yellow-600 rounded-l w-26 ">
+                                  <p class="font-bold p-0 mt-3 flex text-white ml-14">Administrador</p>
+                          </div>
+                </li> 
+                
+                <!-- MONITOREO LINK -->
                 <li class="font-semibold border-b-2 py-2 px-4 rounded-l hover:bg-yellow-400 active:bg-yellow-600 mb-8 text-white flex"> 
                         <a routerLink="/monitoring" class="flex" >
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -21,7 +27,7 @@
                             </svg> Monitoreo
                         </a>
                 </li>
-
+                <!-- ADMIN. DE PRESUPUESTO LINK -->
                 <li class="font-semibold border-b-2 py-2 px-4  rounded-l hover:bg-yellow-400 active:bg-yellow-600 mb-8 text-white flex">
                         <a  class="flex">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -30,14 +36,16 @@
                         </a>
                 </li>
 
+                <!-- NÓMINA LINK  -->
                 <li class="font-semibold border-b-2 py-2 px-4 rounded-l hover:bg-yellow-400 active:bg-yellow-600 mb-8 text-white flex">
                         <a class="flex">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-                            </svg> Nómina
+                            </svg>Nómina
                         </a>
                 </li>
 
+                <!-- LOG OUT REF -->
                 <li class="font-semibold mt-60  shadow-md border-t-2 py-2 px-4 rounded-l  hover:bg-yellow-400 active:bg-yellow-600 text-white flex">
                   <a class="flex">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose=require("mongoose")
+const mongoose=require("mongoose");
 const app = express();
-const UsersRoute = require("./routes/users.route")
+const UsersRoute = require("./routes/users.route");
+const TransactionRoute= require("./routes/transaction.rout");
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -30,6 +31,7 @@ mongoose.connect(
 
 //USO DE LAS RUTAS
 
+app.use("/api", UsersRoute);
 app.use("/api", UsersRoute);
 
 
