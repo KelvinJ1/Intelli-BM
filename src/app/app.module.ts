@@ -7,13 +7,15 @@ import { LoginComponent } from './login/login.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import {  HttpClientModule} from "@angular/common/http";
 import { ChartsComponent } from './charts/charts.component';
+import { PocketsComponent } from './pockets/pockets.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SideMenuComponent,
-    ChartsComponent
+    ChartsComponent,
+    PocketsComponent
   ],
   imports: [
     BrowserModule,
