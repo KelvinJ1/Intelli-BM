@@ -8,6 +8,8 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import {  HttpClientModule} from "@angular/common/http";
 import { ChartsComponent } from './charts/charts.component';
 import { PocketsComponent } from './pockets/pockets.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { PocketsComponent } from './pockets/pockets.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, HttpClientModule
+    FormsModule, HttpClientModule, NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

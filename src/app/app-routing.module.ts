@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChartsComponent } from './charts/charts.component';
 import { LoginComponent } from './login/login.component';
 import { PocketsComponent } from './pockets/pockets.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
@@ -23,6 +24,10 @@ component:LoginComponent
 {
   path: "pockets", 
   component:PocketsComponent
+  },
+{
+  path: "charts", 
+  component:ChartsComponent
   }
 
 ];

@@ -12,4 +12,14 @@ export class ChartsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  testData=[
+  
+  {name: "General", value: 45000000},
+  {name: "Nómina", value: 5000000},
+  {name: "Viáticos", value: 4000000},
+  
+  ];
+  
+
+
 }

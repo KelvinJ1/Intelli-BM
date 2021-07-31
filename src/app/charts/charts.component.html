@@ -1,1 +1,35 @@
-<p>charts works!</p>
+<div class="flex  justify-center ">
+
+    <div class="flex flex-shrink bg-indigo-100 w-6/12 h-96 m-20">
+    <ngx-charts-bar-vertical 
+    [view]="[600,200]"
+    [results]="testData"
+    [xAxisLabel]="'Pockets'"
+    [legendTitle]="'on-live Pockets amount '"
+    [yAxisLabel]="'Current amount'"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="true">
+</ngx-charts-bar-vertical> 
+
+
+</div>
+  
+<div class="m-20 flex flex-shrink bg-yellow-100 w-6/12 h-96">
+<ngx-charts-advanced-pie-chart
+
+    [view]="[600,200]"
+    [results]="testData"
+    [gradient]="true" >
+</ngx-charts-advanced-pie-chart>
+
+</div>
+
+
+</div>
+ 
+ 
+ 
