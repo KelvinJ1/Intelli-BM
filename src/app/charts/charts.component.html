@@ -1,12 +1,12 @@
 <div class="flex  justify-center ">
-
-    <div class="flex flex-shrink bg-indigo-100 w-6/12 h-96 m-20">
+<!-- sizes w-6/12 h-60 -->
+    <div class="transform hover:scale-125 transition duration-300 shadow-2xl rounded-2xl flex flex-shrink justify-center items-center  w-auto h-auto m-10">
     <ngx-charts-bar-vertical 
-    [view]="[600,200]"
+    [view]="[600,300]"
     [results]="testData"
-    [xAxisLabel]="'Pockets'"
-    [legendTitle]="'on-live Pockets amount '"
-    [yAxisLabel]="'Current amount'"
+    [xAxisLabel]="'POCKETS'"
+    [legendTitle]="'on-live'"
+    [yAxisLabel]="'AMOUNT'"
     [legend]="true"
     [showXAxisLabel]="true"
     [showYAxisLabel]="true"
@@ -18,10 +18,10 @@
 
 </div>
   
-<div class="m-20 flex flex-shrink bg-yellow-100 w-6/12 h-96">
+<div class="transform hover:scale-125 transition duration-300 shadow-2xl rounded-2xl m-10 flex flex-shrink justify-center items-center  w-auto h-auto">
 <ngx-charts-advanced-pie-chart
 
-    [view]="[600,200]"
+    [view]="[600,300]"
     [results]="testData"
     [gradient]="true" >
 </ngx-charts-advanced-pie-chart>

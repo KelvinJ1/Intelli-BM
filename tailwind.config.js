@@ -10,7 +10,15 @@ module.exports = {
     },
     darkMode: 'class', // or 'media' or 'class'
     theme: {
-      extend: {},
+      extend: {
+
+        fontFamili:{
+
+          body:['Nunito']
+
+        }
+
+      },
     },
     variants: {backgroundColor:['hover','active', 'focus'],
       extend: {},
