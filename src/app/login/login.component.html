@@ -4,7 +4,7 @@
                 <img class="wave" src="../../assets/wave.png" >
                 <img class="logo" src="../..//assets/intelliLogo.png" >
         
-        <p>Ahorra tiempo y papeleo,
+        <p>Ahorra tiempo y papeleo.
 ¡Comienza a controlar el presupuesto corporativo con nosotros de  la manera más fácil y rápida!</p>
         
             </div>
@@ -14,10 +14,11 @@
                 <div class="formBx">
 
                     <!-- cuando submit, ejecuta metodo SignIn  -->
-                    <form (submit)="signIn()">
+                    <form (submit)="signIn(loginForm)"#loginForm='ngForm'>
 
                         <div class="inputBx">
-                            <input type="text" [(ngModel)]="user.name" name="name" required placeholder="Username" autofocus>
+                            <input  type="email" [(ngModel)]="user.email"  name="email" required placeholder="E-mail" autofocus >
+                        
                         </div>
 
                         <div class="inputBx">
@@ -30,7 +31,7 @@
                         </div>
 
                         <div class="inputBx">
-                             <a href="#"> Recuperar contraseña</a> 
+                            <a href="#"> Recuperar contraseña</a> 
                         </div>
 
 

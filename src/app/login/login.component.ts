@@ -1,42 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { User } from '../models/user.model';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
+
 export class LoginComponent implements OnInit {
 
-  user = {
-name:"",
-password:""}
+  user: User;
 
   constructor(private authService: AuthService,
-    private router: Router,
+    // private router: Router,
     
-    ) {  }
+    ) { this.user={email:"", password:""} }
 
   ngOnInit(): void {
   }
 
-  signIn() {
-
-this.authService.signIn(this.user)
-.subscribe(
-  res => {
-  console.log(res)
-
-  localStorage.setItem("token", res.token);
-  this.router.navigate(["/monitoring"]);
-
-
-  }, 
-  err=> console.log(err)
-  )
+  signIn(form: NgForm) {
+    console.log(this.user.email)
+if (form.invalid) {
+  return console.log("formulario inválido");
+  
 }
 
+this.authService.signIn(form.value.email, form.value.password);
 
+
+
+
+}
 
 }

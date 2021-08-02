@@ -3,7 +3,7 @@ const { application } = require("express");
 const express = require("express"); 
 const router = express.Router();
 const UsersController = require("../controllers/users.controller")
-
+const checkauth = require("../middleware/auth");
 
 router.get('/');
     
@@ -15,11 +15,11 @@ router.post("/signin",UsersController.getUser);
 router.get("/nomina",UsersController.getUsers);
 
 //tareas privadas (autorización)
-router.get("/private-task",UsersController.verifyToken, (req, res) => {
+router.get("/private-task",checkauth, (req, res) => {
 
 res.json({
-    tes:"sisa",
-    description:"ies"
+    tes:"entragado",
+    description:"test"
 })
 
 });

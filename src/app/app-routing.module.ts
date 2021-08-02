@@ -22,13 +22,13 @@ component:LoginComponent
   }
 ,
 {
-  path: "pockets", 
-  component:PocketsComponent
+  path: "managment", 
+  component:SideMenuComponent
   },
-{
-  path: "charts", 
-  component:ChartsComponent
-  }
+// {
+//   path: "", 
+//   component:
+//   }
 
 ];
 

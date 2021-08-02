@@ -32,7 +32,6 @@ mongoose.connect(
 //USO DE LAS RUTAS
 
 app.use("/api", UsersRoute);
-app.use("/api", UsersRoute);
 
 
 

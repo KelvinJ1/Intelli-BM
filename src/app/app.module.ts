@@ -5,11 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
-import {  HttpClientModule} from "@angular/common/http";
+import {  HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
 import { ChartsComponent } from './charts/charts.component';
 import { PocketsComponent } from './pockets/pockets.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     FormsModule, HttpClientModule, NgxChartsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
