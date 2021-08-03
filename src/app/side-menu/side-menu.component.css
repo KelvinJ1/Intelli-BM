@@ -4,3 +4,9 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+
+.is-active{
+
+    background-color: #78350F;
+
+}

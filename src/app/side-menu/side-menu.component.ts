@@ -1,5 +1,8 @@
-import { NgIf } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-menu',
@@ -8,28 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideMenuComponent implements OnInit {
 
-  constructor() { }
+  isAuth = false;
+  private authListenerSub!: Subscription;
+
+
+  constructor(private authService: AuthService) { }
+
 
   ngOnInit(): void {
-
-// const currentLocation =location.href;
-// const section = document.querySelectorAll("a");
-// const sectionLength= section.length
-// for(let i=0; i<sectionLength; i++){
-
-//   if (section[i].href===currentLocation) {
-    
-//     section[i].className = "active"    
-//   }
-
-
-
-
-
-// -----------
-
-
-
+    //added to inform the renderized component that the token is still on
+    this.isAuth=this.authService.getisAuthenticated();
+    this.authListenerSub = this.authService.getAuthStatusListener()
+    .subscribe((isAuthenticated)=>{
+      this.isAuth = isAuthenticated;
+    });
   }
+
+
+//para salir
+onLogout(): void {
+this.authService.logout();
+};  
 
 }

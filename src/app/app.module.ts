@@ -11,6 +11,9 @@ import { PocketsComponent } from './pockets/pockets.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { InformeComponent } from './informe/informe.component';
+
+
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     LoginComponent,
     SideMenuComponent,
     ChartsComponent,
-    PocketsComponent
+    PocketsComponent,
+    InformeComponent
   ],
   imports: [
     BrowserModule,

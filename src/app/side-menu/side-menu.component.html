@@ -1,9 +1,9 @@
 
   <!-- both sides (screen) -->
-  <div class=" flex  h-full md:h-screen xl:h-screen">
+  <div class=" flex  md:h-full xl:h-screen">
 
       <!-- sidebar -->
-      <div class=" bg-yellow-500 p-4 border-r-0 w-80 border-gray-200">
+      <div class=" bg-yellow-500 z-10 p-4  border-r-0 w-80 border-gray-200">
 
           <ul class="m-6 flex flex-col">
 
@@ -11,8 +11,8 @@
          
                 <!-- PROFILE PIC -->
                 <li class="mb-20 ">
-                          <div class=" font-semibold mx-auto mb-6 bg-blue-100 rounded-full h-24 w-24 flex items-center justify-center p-0">
-                                  <img src="../../assets/avataaars.png" alt="Admin">
+                          <div class="box-border font-semibold mx-auto mb-6 bg-yellow-700 rounded-full w-40 h-40 flex items-center justify-center p-0">
+                                  <img src="../../assets/Jonathan_Ive_(OTRS).jpg" alt="Admin" class="shadow-2xl h-40 w-40 rounded-full">
                           </div> 
 
                           <div class=" px-2 bg-opacity-50 bg-yellow-600 rounded-lg  ">
@@ -21,16 +21,16 @@
                 </li> 
                 
                 <!-- MONITOREO LINK -->
-                <li class="font-semibold border-b-2 py-2 px-4 rounded-lg hover:bg-yellow-400 active:bg-yellow-600 mb-8 text-white flex"> 
-                        <a routerLink="/monitoring" routerLinkActive="active" class="flex" >
+                <li > 
+                        <a routerLink="/monitoring"  routerLinkActive="is-active" class="font-semibold border-b-2 py-2 px-4 rounded-lg hover:bg-yellow-400  mb-8 text-white flex" >
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg> Monitoreo
                         </a>
                 </li>
                 <!-- ADMIN. DE PRESUPUESTO LINK -->
-                <li class="font-semibold border-b-2 py-2 px-4  rounded-lg hover:bg-yellow-400 active:bg-yellow-600 mb-8 text-white flex">
-                        <a routerLink="/admBudget" routerLinkActive="active" class="flex">
+                <li >
+                        <a  routerLink="/managment" routerLinkActive="is-active" class="font-semibold border-b-2 py-2 px-4  rounded-lg hover:bg-yellow-400 mb-8 text-white flex">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                             </svg>Presupuesto
@@ -38,23 +38,23 @@
                 </li>
 
                 <!-- NÓMINA LINK  -->
-                <li class="font-semibold border-b-2 py-2 px-4 rounded-lg hover:bg-yellow-400  mb-40 text-white flex">
-                        <a routerLink="/payroll" routerLinkActive="active" class="flex active:bg-yellow-600">
+                <li >
+                        <a routerLink="/payroll" routerLinkActive="is-active" class="font-semibold border-b-2 py-2 px-4 rounded-lg hover:bg-yellow-400  mb-8 text-white flex">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                             </svg>Nómina
                         </a>
                 </li>
 
-                <li class="flex  font-semibold  shadow-md border-t-2 py-2 px-4 rounded-lg  bg-yellow-600  hover:bg-yellow-900    text-white ">
-                  <a routerLink="/login" class="flex self-end">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                      </svg>Log out
-                  </a>
-                </li>
-              
+                <button (click)="onLogout()"  class="mt-40 w-auto flex  font-semibold  shadow-2xl border-2 py-2 px-4 rounded-lg  bg-yellow-500  hover:bg-yellow-900    text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  </svg>
+                  Log out
+                </button>
+
           </ul>
+          
 
       </div>
        
@@ -71,6 +71,8 @@
           <input type="button" value="GENERAR REPORTE" class="flex transform hover:scale-125 transition duration-300 rounded-lg bg-gray-800 w-60 h-20 self-center justify-center font-bold text-white">
 
         </div>
+
+
 
 
       </div>

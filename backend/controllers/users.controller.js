@@ -13,11 +13,10 @@ const UsersController = {}
 
 
                 //get (listar usuarios)
-                UsersController.getUsers= async(req,res)=>{
-                   const mostrar= await  Users.find();
-                   res.status(200).json(mostrar)
-
-
+                UsersController.getUsers= (req,res)=>{
+                    Users.find().then((mostrar)=>{
+                        return res.status(200).json(mostrar);
+                    });
                 };
 
                 //post (crear usuarios)
@@ -30,7 +29,8 @@ const UsersController = {}
                         phone:req.body.phone,
                         email:req.body.email,
                         accNumber:req.body.accNumber,
-                        address:req.body.address});
+                        address:req.body.address,
+                        cargo: req.body.cargo});
                     newUser.save()
                     .then(result => {res.status(201).json({message:"User created succesfully", result:result});
                     })
@@ -58,7 +58,7 @@ const UsersController = {}
                     }   
                     //checks in the given email, id, secKey(envVAR),expiration time                
                 const token=jwt.sign({email:userGet.email, /*userId: userGet._id*/}, key, {expiresIn:"1h"});
-                    res.status(200).json({token: token});
+                    res.status(200).json({token: token, expiresIn: 3600});
                     })
                     .catch((err =>{
                         return res.status(401).json({message:"Authentication failed, token error"});

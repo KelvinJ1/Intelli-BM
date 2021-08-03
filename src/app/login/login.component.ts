@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     ) { this.user={email:"", password:""} }
 
   ngOnInit(): void {
+
   }
 
   signIn(form: NgForm) {

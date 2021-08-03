@@ -11,7 +11,7 @@ try {
 
 } catch (error) {
 
-  return res.status(401).send("Unauthorized request")
+  return res.status(401).json({message:"Unauthorized request"})
   
 }
 

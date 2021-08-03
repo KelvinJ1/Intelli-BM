@@ -11,17 +11,16 @@ module.exports = {
     darkMode: 'class', // or 'media' or 'class'
     theme: {
       extend: {
-
-        fontFamili:{
-
+        fontFamily:{
           body:['Nunito']
-
         }
 
       },
     },
-    variants: {backgroundColor:['hover','active', 'focus'],
-      extend: {},
+    variants: {
+      extend: {
+        backgroundColor:['active'],
+      },
     },
     plugins: [require('@tailwindcss/aspect-ratio'),require('@tailwindcss/forms'),require('@tailwindcss/typography')],
 };

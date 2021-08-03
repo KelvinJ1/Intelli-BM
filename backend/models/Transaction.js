@@ -1,12 +1,20 @@
 const mongoose=require('mongoose');
-const Schema = mongoose.Schema;
 
-const TransactionSchema=Schema({
-    companyid:String,
-    pocketid:String,
-    userid:String,
-    data:String
-    });
+const TransactionSchema=mongoose.Schema({
+    companyid:{type: String},
+    pocketid:{type: String},
+    userid:{type: String},
+    data:{type: String},
+    author:{type: mongoose.Schema.Types.ObjectId,ref:"User", required: true}
 
-    const Transaction = mongoose.model('Transaction',TransactionSchema);
-    module.exports = Transaction;
+// autor, infor, id destinatario, cantida (xpocket)
+
+
+},
+{timestamps: true}
+
+);
+
+
+  
+    module.exports = mongoose.model("Transaction", TransactionSchema)

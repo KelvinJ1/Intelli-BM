@@ -15,7 +15,8 @@ mongoose.connect(
   "mongodb+srv://admin:MjGTXss8vqhQmqqS@cluster0.1feml.mongodb.net/IntelliDB?retryWrites=true&w=majority",
   {useNewUrlParser: true,
      useUnifiedTopology: true,
-     useFindAndModify: false
+     useFindAndModify: false,
+     useCreateIndex: true
     }
 
 

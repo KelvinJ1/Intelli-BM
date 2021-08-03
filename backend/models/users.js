@@ -9,9 +9,9 @@ const UsersSchema = mongoose.Schema({
    email:{type: String, unique:true},
    accNumber: Number,
    address: String,
-},
-
-{timestamps: true});
+   cargo:String,},
+{timestamps: true}
+);
 
 UsersSchema.plugin(uniqueValidator);
 

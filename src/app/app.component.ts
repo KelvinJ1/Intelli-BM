@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from './services/auth.service';
+
 
 @Component({
   //nombre a utilizar para llamar el componente en el index
@@ -9,14 +12,17 @@ import { Component } from '@angular/core';
 
 
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Intelli-BM';
-  nombre = "by Kelvin";
 
-if () {
+constructor(private authservice: AuthService){}
+
+ngOnInit(){
+
+this.authservice.autoAuthUser();
+
+
   
 }
-
-
 
 }
