@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
 
   user: User;
 
+  isAuth=false;
+
   constructor(private authService: AuthService,
     // private router: Router,
     
@@ -31,12 +33,18 @@ if (form.invalid) {
   return console.log("formulario inválido");
   
 }
-
 this.authService.signIn(form.value.email, form.value.password);
-
-
-
-
+;
 }
+
+message(){
+
+  if (this.authService.getToken()){
+    this.isAuth=true; 
+  }
+  this.isAuth=false;
+}
+
+
 
 }

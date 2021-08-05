@@ -2,51 +2,52 @@
 
 <div class="m-auto h-3/4 bg-white w-1/3  px-0 border-2 mt-24 font-body" id="invoice">
 
-<header class="bg-gray-200 border-b-2 border-gray-300 shadow-md w-auto flex flex-col m-auto p-6 mb-2 mt-0">
-        <img src="../../assets/intelliLogo.png" class="flex w-56 h-20 justify-self-start">
-        <h1 class="flex m-auto text-gray-600 font-extrabold  text-4xl">REPORTE</h1>
-</header>
-
-<div class="flex flex-col w-auto m-auto  justify-items-center text-gray-700 font-semibold text-xl p-6">
-
-<h4>Fecha:{{" "+VALUE}}</h4>
-<h4>Ciudad: {{" "+VALUE}}</h4>
-</div>
-
-<hr class="h-0.5 bg-gray-300 shadow-md" >
-
-
-<div class="m-auto rounded-2xl  flex order-2 justify-center items-center  w-3/4 h-auto mb-2">
-    <ngx-charts-advanced-pie-chart
-        [view]="[600,300]"
-        [results]="testData"
-        [gradient]="true" >
-    </ngx-charts-advanced-pie-chart>
-    </div>
-
-<hr class="h-0.5  bg-gray-300 shadow-md" >
-
-<div class=" flex flex-col w-auto m-auto mb-2 justify-items-center">
-
-    <span class="text-gray-700 text-lg font-bold flex gap-x-52 my-2 w-full " >
-        <h3 class=" ml-6">GENERAL: </h3> 
-        <h3 class="  ml-60">{{VALUE}} </h3> 
-    
-    </span>
-    <hr class="h-0.5  bg-gray-300 shadow-md" >
-    <span class="text-gray-700 text-lg font-bold flex gap-x-52 my-2 w-full ">
-        <h3 class=" ml-6">NÓMINA: </h3>  
-        <h3 class=" ml-64">{{VALUE}} </h3>  
-           
-    </span>
-    <hr class="h-0.5  bg-gray-300 shadow-md" >
-    <span class="text-gray-700 text-lg font-bold flex gap-x-52 my-2 w-full ">
-        <h3 class=" ml-6 ">VIÁTICOS:  </h3>  
-        <h3 class=" ml-60">{{VALUE}} </h3>  
-
-    </span>
-
-
-</div>
-
-</div>
+  <header class="bg-gray-200 border-b-2 border-gray-300 shadow-md w-auto flex flex-col m-auto p-6 mb-2 mt-0">
+          <img src="../../assets/intelliLogo.png" class="flex w-56 h-20 justify-self-start">
+          <h1 class="flex m-auto text-gray-600 font-extrabold  text-4xl">REPORTE</h1>
+  </header>
+  
+  <div class="flex flex-col w-auto m-auto  justify-items-center text-gray-700 font-semibold text-xl p-6">
+  
+  <h4>Fecha:{{" "+VALUE}}</h4>
+  <h4>Ciudad: {{" "+VALUE}}</h4>
+  </div>
+  
+  <hr class="h-0.5 bg-gray-300 shadow-md" >
+  
+  
+  <div class="m-auto rounded-2xl  flex order-2 justify-center items-center  w-3/4 h-auto mb-2">
+      <ngx-charts-advanced-pie-chart
+          [view]="[600,300]"
+          [results]="testData"
+          [gradient]="true" >
+      </ngx-charts-advanced-pie-chart>
+      </div>
+  
+  <hr class="h-0.5  bg-gray-300 shadow-md" >
+  
+  <div class=" flex flex-col w-auto m-auto mb-2 justify-items-center">
+  
+      <span class="text-gray-700 text-lg font-bold flex gap-x-52 my-2 w-full " >
+          <h3 class=" ml-6">GENERAL: </h3> 
+          <h3 class="  ml-60">{{VALUE}} </h3> 
+      
+      </span>
+      <hr class="h-0.5  bg-gray-300 shadow-md" >
+      <span class="text-gray-700 text-lg font-bold flex gap-x-52 my-2 w-full ">
+          <h3 class=" ml-6">NÓMINA: </h3>  
+          <h3 class=" ml-64">{{VALUE}} </h3>  
+             
+      </span>
+      <hr class="h-0.5  bg-gray-300 shadow-md" >
+      <span class="text-gray-700 text-lg font-bold flex gap-x-52 my-2 w-full ">
+          <h3 class=" ml-6 ">VIÁTICOS:  </h3>  
+          <h3 class=" ml-60">{{VALUE}} </h3>  
+  
+      </span>
+  
+  
+  </div>
+  
+  </div>
+  

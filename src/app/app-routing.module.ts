@@ -1,22 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
-import { ChartsComponent } from './charts/charts.component';
+import { EditPocketsComponent } from './edit-pockets/edit-pockets.component';
 import { InformeComponent } from './informe/informe.component';
 import { LoginComponent } from './login/login.component';
-import { PocketsComponent } from './pockets/pockets.component';
-import { SideMenuComponent } from './side-menu/side-menu.component';
+import { MonitoringComponent } from './monitoring/monitoring.component';
+import { NominaComponent } from './nomina/nomina.component';
 
 const routes: Routes = [
 { path: "",redirectTo: "/login",pathMatch:"full"},
 
 {path:"login", component:LoginComponent} ,
 
-{path:"monitoring", component:SideMenuComponent, canActivate: [AuthGuard]}
+{path:"monitoring", component:MonitoringComponent, canActivate: [AuthGuard]}
 ,
-{path:"managment", component:SideMenuComponent, canActivate: [AuthGuard]},
+{path:"managment", component:EditPocketsComponent, canActivate: [AuthGuard]},
 
-{path:"informe", component:InformeComponent,},
+{path:"payroll", component:NominaComponent,},
+
+{path:"editpockets", component:EditPocketsComponent,},
+
+{path:"test", component:EditPocketsComponent,},
+
+
 
 ];
 

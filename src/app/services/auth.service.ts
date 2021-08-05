@@ -27,7 +27,7 @@ getToken(){
 
 getAuthStatusListener(){
 
-return this.authStatusListener;
+return this.authStatusListener.asObservable();
 
 }
 
@@ -53,8 +53,8 @@ signIn(email:string, password:string){
       const expirationDate = new Date(now.getTime()+expirationInDuration*1000);
       console.log(expirationDate);
       this.saveAuthData(this.token, expirationDate);
-      
       this.router.navigate(["/monitoring"])
+     
       
     }
     });
@@ -105,6 +105,7 @@ if (expiresIn>0) {
     this.isAuthenticated = true;
     this.setAuthTimer(expiresIn/1000);
     this.authStatusListener.next(true);
+    this.router.navigate(["/monitoring"])
 
 
 }

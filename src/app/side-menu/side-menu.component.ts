@@ -1,8 +1,9 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { AstMemoryEfficientTransformer } from '@angular/compiler';
 
 @Component({
   selector: 'app-side-menu',
@@ -15,7 +16,7 @@ export class SideMenuComponent implements OnInit {
   private authListenerSub!: Subscription;
 
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -24,13 +25,18 @@ export class SideMenuComponent implements OnInit {
     this.authListenerSub = this.authService.getAuthStatusListener()
     .subscribe((isAuthenticated)=>{
       this.isAuth = isAuthenticated;
-    });
+     
+     
+   
+    }); 
   }
-
 
 //para salir
 onLogout(): void {
 this.authService.logout();
 };  
+
+
+
 
 }

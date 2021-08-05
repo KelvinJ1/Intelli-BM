@@ -1,5 +1,7 @@
 <section>
 
+    
+
         <div class="imgCard">
                 <img class="wave" src="../../assets/wave.png" >
                 <img class="logo" src="../..//assets/intelliLogo.png" >
@@ -9,12 +11,19 @@
         
             </div>
 
-        <div class="loginCard">
+
+            <div class="loginCard">
         
                 <div class="formBx">
 
                     <!-- cuando submit, ejecuta metodo SignIn  -->
                     <form (submit)="signIn(loginForm)"#loginForm='ngForm'>
+
+                      
+                            <!-- <div   class="justify-center flex py-3 px-2 my-2 bg-green-300 text-green-800 rounded border border-green-600">Welcome!</div> -->
+                            <!-- <div *ngIf="!isAuth" class="justify-center flex py-3 px-2 my-2 bg-red-300 text-red-800 rounded border border-red-600">Incorrect! CHECK your credentials</div>               -->
+                        
+                        
 
                         <div class="inputBx">
                             <input  type="email" [(ngModel)]="user.email"  name="email" required placeholder="E-mail" autofocus >
@@ -30,6 +39,7 @@
                             <input type="submit" value="Sign-in">
                         </div>
 
+                        
                         <div class="inputBx">
                             <a href="#"> Recuperar contraseña</a> 
                         </div>

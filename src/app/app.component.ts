@@ -15,14 +15,27 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
   title = 'Intelli-BM';
 
+  isAuth=false;
 constructor(private authservice: AuthService){}
 
-ngOnInit(){
+ngOnInit( ){
+  
+  //listener on/off sidebar
+this.authservice.getAuthStatusListener().subscribe(resp=>{ 
+    if (!this.authservice.getisAuthenticated()) { 
+      
+      return this.isAuth=resp
+    }
+    return this.isAuth=resp;
+  });
 
+  //levantar sesión
 this.authservice.autoAuthUser();
 
 
-  
-}
+
+  }
+
 
 }
+

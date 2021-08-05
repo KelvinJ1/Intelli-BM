@@ -97,6 +97,11 @@ section .loginCard .formBx  .inputBx{
     margin-bottom: 20px;
 
 }
+section .loginCard .formBx  .inputBx input[type="email"]{
+
+    margin-top: 20px;
+
+}
 
 
 section .loginCard .formBx .inputBx input{

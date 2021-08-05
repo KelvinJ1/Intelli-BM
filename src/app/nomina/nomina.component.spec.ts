@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PocketsComponent } from './pockets.component';
+import { NominaComponent } from './nomina.component';
 
-describe('PocketsComponent', () => {
-  let component: PocketsComponent;
-  let fixture: ComponentFixture<PocketsComponent>;
+describe('NominaComponent', () => {
+  let component: NominaComponent;
+  let fixture: ComponentFixture<NominaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PocketsComponent ]
+      declarations: [ NominaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PocketsComponent);
+    fixture = TestBed.createComponent(NominaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

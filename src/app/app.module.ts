@@ -6,12 +6,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import {  HttpClientModule, HTTP_INTERCEPTORS} from "@angular/common/http";
-import { ChartsComponent } from './charts/charts.component';
-import { PocketsComponent } from './pockets/pockets.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { InformeComponent } from './informe/informe.component';
+import { EditPocketsComponent } from './edit-pockets/edit-pockets.component';
+import { MonitoringComponent } from './monitoring/monitoring.component';
+import { NominaComponent } from './nomina/nomina.component';
 
 
 
@@ -20,9 +21,11 @@ import { InformeComponent } from './informe/informe.component';
     AppComponent,
     LoginComponent,
     SideMenuComponent,
-    ChartsComponent,
-    PocketsComponent,
-    InformeComponent
+
+    InformeComponent,
+    EditPocketsComponent,
+    MonitoringComponent,
+    NominaComponent
   ],
   imports: [
     BrowserModule,
