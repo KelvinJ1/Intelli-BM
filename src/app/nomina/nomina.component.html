@@ -50,7 +50,7 @@
         <tbody>
             <tr class="bg-gray-50 text-center">
                 <td class="p-2 border-r">
-                    
+
                 </td>
                 <td class="p-2 border-r">
                     <input type="text" class="border p-1">
@@ -67,69 +67,17 @@
                 <td class="p-2">
                     <input type="text" class="border p-1">
                 </td>
-                
-                
+
+
             </tr>
-            <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
+            <tr *ngFor='let i of users' class="bg-gray-100 text-center border-b text-sm text-gray-600">
                 <td class="p-2 border-r">
                     <input type="checkbox">
                 </td>
-                <td class="p-2 border-r">1</td>
-                <td class="p-2 border-r">John Doe</td>
-                <td class="p-2 border-r">john@gmail.com</td>
-                <td class="p-2 border-r">Sydney, Australia</td>
-                <td>
-                    <a href="#" class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin">Edit</a>
-                    <a href="#" class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">Remove</a>
-                </td>
-            </tr>
-            <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
-                <td class="p-2 border-r">
-                    <input type="checkbox">
-                </td>
-                <td class="p-2 border-r">2</td>
-                <td class="p-2 border-r">Adam Smith</td>
-                <td class="p-2 border-r">adam@gmail.com</td>
-                <td class="p-2 border-r">Sydney, Australia</td>
-                <td>
-                    <a href="#" class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin">Edit</a>
-                    <a href="#" class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">Remove</a>
-                </td>
-            </tr>
-            <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
-                <td class="p-2 border-r">
-                    <input type="checkbox">
-                </td>
-                <td class="p-2 border-r">3</td>
-                <td class="p-2 border-r">Jean Doe</td>
-                <td class="p-2 border-r">jean@gmail.com</td>
-                <td class="p-2 border-r">Sydney, Australia</td>
-                <td>
-                    <a href="#" class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin">Edit</a>
-                    <a href="#" class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">Remove</a>
-                </td>
-            </tr>
-            <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
-                <td class="p-2 border-r">
-                    <input type="checkbox">
-                </td>
-                <td class="p-2 border-r">3</td>
-                <td class="p-2 border-r">Jean Doe</td>
-                <td class="p-2 border-r">jean@gmail.com</td>
-                <td class="p-2 border-r">Sydney, Australia</td>
-                <td>
-                    <a href="#" class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin">Edit</a>
-                    <a href="#" class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">Remove</a>
-                </td>
-            </tr>
-            <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
-                <td class="p-2 border-r">
-                    <input type="checkbox">
-                </td>
-                <td class="p-2 border-r">3</td>
-                <td class="p-2 border-r">Jean Doe</td>
-                <td class="p-2 border-r">jean@gmail.com</td>
-                <td class="p-2 border-r">Sydney, Australia</td>
+                <td class="p-2 border-r">{{i.id}}</td>
+                <td class="p-2 border-r">{{i.name}}</td>
+                <td class="p-2 border-r">{{i.email}}</td>
+                <td class="p-2 border-r">{{i.accNumber}}</td>
                 <td>
                     <a href="#" class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin">Edit</a>
                     <a href="#" class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">Remove</a>
@@ -137,6 +85,9 @@
             </tr>
         </tbody>
     </table>
-    
+
 </div>
-<div class="flex justify-end  w-4/5 m-auto"><button class="rounded-lg flex justify-center items-center bg-indigo-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">GENERAR PAGO</button>  <a href="#" class="rounded-lg flex justify-center items-center bg-green-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">AÑADIR</a></div>
+<div class="flex justify-end  w-4/5 m-auto">
+    <button class="transform hover:scale-125 transition duration-300 rounded-lg flex justify-center items-center bg-indigo-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">GENERAR PAGO</button>  
+    <button  class="transform hover:scale-125 transition duration-300 rounded-lg flex justify-center items-center bg-green-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">AÑADIR</button>
+</div>

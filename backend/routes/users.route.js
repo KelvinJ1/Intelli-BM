@@ -12,17 +12,7 @@ router.post("/register", UsersController.createUsers);
 
 router.post("/signin",UsersController.getUser);
 
-router.get("/nomina",UsersController.getUsers);
-
-//tareas privadas (autorización)
-router.get("/private-task",checkauth, (req, res) => {
-
-res.json({
-    tes:"entragado",
-    description:"test"
-})
-
-});
+router.get("/getUsers",UsersController.getUsers);
 
 
 router.put("/:id",UsersController.editUser);

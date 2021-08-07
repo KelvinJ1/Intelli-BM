@@ -12,12 +12,7 @@ const key = "probando__::5896"
 const UsersController = {}
 
 
-                //get (listar usuarios)
-                UsersController.getUsers= (req,res)=>{
-                    Users.find().then((mostrar)=>{
-                        return res.status(200).json(mostrar);
-                    });
-                };
+               
 
                 //post (crear usuarios)
                 UsersController.createUsers = (req,res) =>{
@@ -57,7 +52,7 @@ const UsersController = {}
                         return res.status(401).json({message: "Unauthorized, password does not match"});
                     }   
                     //checks in the given email, id, secKey(envVAR),expiration time                
-                const token=jwt.sign({email:userGet.email, /*userId: userGet._id*/}, key, {expiresIn:"1h"});
+                const token=jwt.sign({email:userGet.email, userId: userGet._id}, key, {expiresIn:"1h"});
                     res.status(200).json({token: token, expiresIn: 3600});
                     })
                     .catch((err =>{
@@ -82,6 +77,23 @@ const UsersController = {}
                 };                                        
 
 
+                //listar
+                UsersController.getUsers = (req,res)=>{
+                    Users.find().then((usersResult)=>{
+                        if(usersResult){
+                        final=[] 
+                        for (let i = 0; i < usersResult.length; i++) { 
+                            if(usersResult[i].rol== 'user' ){
+                                final.push(usersResult[i])
+                            }
+                        }
+                        console.log(final)
+                        res.status(200).json(final)
+                    }else{
+                        res.status(400).json({message:'no encontrado'})
+                    }
+                    })
+                    }
 
 
 module.exports= UsersController;

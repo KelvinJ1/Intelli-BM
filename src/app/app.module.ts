@@ -13,6 +13,7 @@ import { InformeComponent } from './informe/informe.component';
 import { EditPocketsComponent } from './edit-pockets/edit-pockets.component';
 import { MonitoringComponent } from './monitoring/monitoring.component';
 import { NominaComponent } from './nomina/nomina.component';
+import { AddEditComponent } from './add-edit/add-edit.component';
 
 
 
@@ -25,7 +26,8 @@ import { NominaComponent } from './nomina/nomina.component';
     InformeComponent,
     EditPocketsComponent,
     MonitoringComponent,
-    NominaComponent
+    NominaComponent,
+    AddEditComponent
   ],
   imports: [
     BrowserModule,

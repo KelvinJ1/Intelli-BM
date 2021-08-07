@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Pocket } from '../models/pocket.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-monitoring',
@@ -7,25 +10,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MonitoringComponent implements OnInit {
 
-  constructor() { }
+  private pocketSub: Subscription;
+  pockets: Pocket[]=[];
+  valGen=0;
+  valNom=0;
+  valVia=0;
 
-  ngOnInit(): void {
+  constructor(private authService:AuthService) {
+    this.authService.getPocketsValues()
+    this.pocketSub = this.authService.getPocketsUpdateListener().subscribe((pockets:Pocket[])=>{
+      this.pockets = pockets
+      this.setValues()
+    })
   }
 
+  ngOnInit(): void {
+    this.authService.getPocketsValues()
+    this.pocketSub = this.authService.getPocketsUpdateListener().subscribe((pockets:Pocket[])=>{
+      this.pockets = pockets
+      this.setValues()
+    })
 
-  valGen= 45000000;
-  valNom= 5000000;
-  valVia=3000000;
-  
-  
+  }
+
+  setValues(){
+    this.valGen= Number(this.pockets[0].saldo)
+    this.valVia= Number(this.pockets[1].saldo)
+    this.valNom= Number(this.pockets[2].saldo)
+  }
+
   testData=[
-  
-    {name: "General", value: 45000000},
-    {name: "Nómina", value: 5000000},
-    {name: "Viáticos", value: 4000000},
-    
+
+    {name: "General", value: this.valGen},
+    {name: "Nómina", value: this.valVia},
+    {name: "Viáticos", value: this.valNom},
+
     ];
-    
-  
-  
+
+
+
 }

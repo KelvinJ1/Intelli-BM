@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { NgForm } from '@angular/forms';
 
+import { ErrorsInterceptor } from '../errors.interceptor';
+
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService,
     // private router: Router,
     
-    ) { this.user={email:"", password:""} }
+    ) {this.user={id:'',rol:'',name:'',email:"", password:"",phone:'',accNumber:0,address:''} }
 
   ngOnInit(): void {
 
@@ -41,8 +43,10 @@ message(){
 
   if (this.authService.getToken()){
     this.isAuth=true; 
+    
   }
   this.isAuth=false;
+ 
 }
 
 

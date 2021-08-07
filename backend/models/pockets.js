@@ -1,18 +1,12 @@
+
 const mongoose = require('mongoose');
+const uniqueValidator= require("mongoose-unique-validator")
+const PocketsSchema = mongoose.Schema({
+  name: {type: String},
+  saldo:{type: String},
+  duenio:{type: mongoose.Schema.Types.ObjectId,ref:'Users', required:true}
+}, {timestamps: true});
 
-const GeneralSchema = mongoose.Schema({
+PocketsSchema.plugin(uniqueValidator);
 
-   rol:{type: String},
-   name:{type: String},
-   password:{type: String},
-   phone:{type: String},
-   email:{type: String, unique:true},
-   accNumber: Number,
-   address: String,
-   cargo:String,},
-{timestamps: true}
-);
-
-UsersSchema.plugin(uniqueValidator);
-
-module.exports = mongoose.model("Users", UsersSchema)
+module.exports = mongoose.model('Pockets',PocketsSchema)

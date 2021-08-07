@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import {  HttpClient} from "@angular/common/http";
 import { Subject } from 'rxjs';
+import {map} from 'rxjs/operators'
 import { Router } from '@angular/router';
+import { Pocket } from '../models/pocket.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +16,13 @@ private token: string;
 private URL = "http://localhost:3000/api";
 private authStatusListener = new Subject<boolean>();
 private isAuthenticated = false;
+pocketUpdated = new Subject<Pocket[]>();
+usersUpdated = new Subject<User[]>();
 
 
-  constructor(private http:HttpClient,  private router: Router) { 
+
+
+  constructor(private http:HttpClient,  private router: Router) {
       this.token = "";
   }
 
@@ -54,8 +61,8 @@ signIn(email:string, password:string){
       console.log(expirationDate);
       this.saveAuthData(this.token, expirationDate);
       this.router.navigate(["/monitoring"])
-     
-      
+
+
     }
     });
 }
@@ -111,6 +118,51 @@ if (expiresIn>0) {
 }
 
 }
+getPocketsValues(){
+  this.http.get<any>(this.URL+'/pockets/getPockets').pipe(map((pocketData)=>{
+    return pocketData.map((pocket:{_id: string,name: string,saldo: string,duenio: string})=>{
+      return{
+        id: pocket._id,
+        name: pocket.name,
+        saldo: Number(pocket.saldo),
+        duenio: pocket.duenio
 
+      }
+    })
+  })).subscribe((dataTrasformed)=>{
+    const pockets = dataTrasformed;
+    console.log(pockets);
+    this.pocketUpdated.next([...pockets]);
+  })
+}
+
+getPocketsUpdateListener(){
+  return this.pocketUpdated.asObservable();
+}
+
+getUsersValues(){
+  this.http.get<any>(this.URL+'/getUsers').pipe(map((userData)=>{
+    return userData.map((user:{_id: string,rol: string,name: string,password: string, phone:string, email:string,accNumber:number,
+    address: string,})=>{
+      return{
+        id: user._id,
+        name: user.name,
+        password: user.password,
+        phone: user.phone,
+        email: user.email,
+        accNumber: user.accNumber,
+        address: user.address,
+
+      }
+    })
+  })).subscribe((dataTrasformed)=>{
+    const users = dataTrasformed;
+    console.log(users)
+    this.usersUpdated.next([...users]);
+  })
+}
+getUsersUpdateListener(){
+  return this.usersUpdated.asObservable();
+}
 
 }

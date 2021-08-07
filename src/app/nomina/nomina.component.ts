@@ -1,4 +1,8 @@
+  
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { User } from '../models/user.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-nomina',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NominaComponent implements OnInit {
 
-  constructor() { }
+  private usersSub: Subscription
+  users: User[]=[];
+
+  constructor(private authService: AuthService) {
+    this.authService.getUsersValues()
+    this.usersSub=this.authService.getUsersUpdateListener().subscribe((users:User[])=>{
+      this.users=users
+    })
+   }
 
   ngOnInit(): void {
+    this.authService.getUsersValues()
+    this.usersSub=this.authService.getUsersUpdateListener().subscribe((users:User[])=>{
+      this.users=users
+    })
   }
 
 }
