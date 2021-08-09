@@ -11,7 +11,7 @@ import { User } from '../models/user.model';
 })
 
 export class AuthService {
-
+users: User[]=[]
 private token: string;
 private URL = "http://localhost:3000/api";
 private authStatusListener = new Subject<boolean>();
@@ -131,7 +131,6 @@ getPocketsValues(){
     })
   })).subscribe((dataTrasformed)=>{
     const pockets = dataTrasformed;
-    console.log(pockets);
     this.pocketUpdated.next([...pockets]);
   })
 }
@@ -156,13 +155,21 @@ getUsersValues(){
       }
     })
   })).subscribe((dataTrasformed)=>{
-    const users = dataTrasformed;
-    console.log(users)
-    this.usersUpdated.next([...users]);
+    this.users = dataTrasformed;
+    this.usersUpdated.next([...this.users]);
   })
 }
 getUsersUpdateListener(){
   return this.usersUpdated.asObservable();
 }
 
+  deleteUser(id:string){
+    this.http.delete(this.URL+'/deleteUser',{body:{id:id}}).subscribe((result)=>{
+      const updatedUser = this.users.filter(user=>user.id!==id);
+      this.users = updatedUser;
+      console.log(this.users)
+      this.usersUpdated.next([...this.users])
+      this.router.navigate(['/payroll'])
+    })
+  }
 }
