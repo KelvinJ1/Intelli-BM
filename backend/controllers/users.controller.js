@@ -12,7 +12,7 @@ const key = "probando__::5896"
 const UsersController = {}
 
 
-               
+
 
                 //post (crear usuarios)
                 UsersController.createUsers = (req,res) =>{
@@ -31,16 +31,16 @@ const UsersController = {}
                     })
                     .catch(err=>{res.status(500).json({error:err});
                 })
-                
-            
-                    
+
+
+
                 }) };
-            
+
 
                 //get (trae un usuario para LOGIN)
                 UsersController.getUser= (req,res)=>{
-                //Se le asignará si el req.user existe 
-                let userGet;    
+                //Se le asignará si el req.user existe
+                let userGet;
                 Users.findOne({email: req.body.email}).then((user)=>{
                     if (!user) {
                         return  res.status(401).json({message: "Unautohrized, este usuario no existe"});
@@ -50,8 +50,8 @@ const UsersController = {}
                 }).then((result)=>{
                     if (!result){
                         return res.status(401).json({message: "Unauthorized, password does not match"});
-                    }   
-                    //checks in the given email, id, secKey(envVAR),expiration time                
+                    }
+                    //checks in the given email, id, secKey(envVAR),expiration time
                 const token=jwt.sign({email:userGet.email, userId: userGet._id}, key, {expiresIn:"1h"});
                     res.status(200).json({token: token, expiresIn: 3600});
                     })
@@ -59,35 +59,38 @@ const UsersController = {}
                         return res.status(401).json({message:"Authentication failed, token error"});
                     }));
                 };
-                
+
 
 
                 //put (editar usuario)
                 UsersController.editUser= async(req,res)=>{
                     //encunetra usuario por el Id y edita los campos enviados en el body
-                await Users.updateOne(req.params._id, req.body);         
-                    res.status(200).json("Usuario actualizado");        
+                await Users.updateOne(req.params._id, req.body);
+                    res.status(200).json("Usuario actualizado");
                 };
 
 
                 //delete (listar usuarios)
-                UsersController.deleteUser= async(req,res)=>{
-                    await Users.findOneAndDelete(req.params._id);
-                    res.json({status: "usuario eliminado"})
-                };                                        
+                UsersController.deleteUser=(req,res)=>{
+
+                  Users.deleteOne({_id:req.body.id}).then((result)=>{
+                    res.status(200).json({message:'User eliminado'})
+                  })
+
+                };
 
 
                 //listar
                 UsersController.getUsers = (req,res)=>{
                     Users.find().then((usersResult)=>{
                         if(usersResult){
-                        final=[] 
-                        for (let i = 0; i < usersResult.length; i++) { 
+                        final=[]
+                        for (let i = 0; i < usersResult.length; i++) {
                             if(usersResult[i].rol== 'user' ){
                                 final.push(usersResult[i])
                             }
                         }
-                        console.log(final)
+
                         res.status(200).json(final)
                     }else{
                         res.status(400).json({message:'no encontrado'})

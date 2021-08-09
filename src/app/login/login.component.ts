@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService,
     // private router: Router,
-    
+
     ) {this.user={id:'',rol:'',name:'',email:"", password:"",phone:'',accNumber:0,address:''} }
 
   ngOnInit(): void {
@@ -30,10 +30,9 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(form: NgForm) {
-    console.log(this.user.email)
 if (form.invalid) {
   return console.log("formulario inválido");
-  
+
 }
 this.authService.signIn(form.value.email, form.value.password);
 ;
@@ -42,11 +41,11 @@ this.authService.signIn(form.value.email, form.value.password);
 message(){
 
   if (this.authService.getToken()){
-    this.isAuth=true; 
-    
+    this.isAuth=true;
+
   }
   this.isAuth=false;
- 
+
 }
 
 

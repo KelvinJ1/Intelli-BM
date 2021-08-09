@@ -22,13 +22,12 @@ const PocketsController = {}
           Pockets.find().then((pocketsResult)=>{
             if(pocketsResult){
               final=[]
-              
+
               for(let i = 0; i< pocketsResult.length; i++){
                 if(pocketsResult[i].duenio==req.userData.userId){
                   final.push(pocketsResult[i])
                 }
               }
-              console.log(final)
               res.status(200).json(final)
             }else{
               res.status(400).json({message:'no encontrado'})

@@ -1,4 +1,4 @@
-  
+
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { User } from '../models/user.model';
@@ -27,5 +27,10 @@ export class NominaComponent implements OnInit {
       this.users=users
     })
   }
-
+  deleteUser(id:string){
+    this.authService.deleteUser(id)
+    this.usersSub=this.authService.getUsersUpdateListener().subscribe((users:User[])=>{
+      this.users=users
+    })
+  }
 }
