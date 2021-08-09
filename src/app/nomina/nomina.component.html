@@ -80,7 +80,7 @@
                 <td class="p-2 border-r">{{i.accNumber}}</td>
                 <td>
                     <a href="#" class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin">Edit</a>
-                    <a href="#" class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin">Remove</a>
+                    <a href="#" class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin"(click)='deleteUser(i.id)'>Remove</a>
                 </td>
             </tr>
         </tbody>
@@ -88,6 +88,6 @@
 
 </div>
 <div class="flex justify-end  w-4/5 m-auto">
-    <button class="transform hover:scale-125 transition duration-300 rounded-lg flex justify-center items-center bg-indigo-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">GENERAR PAGO</button>  
+    <button class="transform hover:scale-125 transition duration-300 rounded-lg flex justify-center items-center bg-indigo-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">GENERAR PAGO</button>
     <button  class="transform hover:scale-125 transition duration-300 rounded-lg flex justify-center items-center bg-green-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">AÑADIR</button>
 </div>
