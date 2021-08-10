@@ -19,6 +19,7 @@ const PocketsController = {}
         }
         PocketsController.getPockets = (req,res)=>{
           //recoge los pockets del usuario
+
           Pockets.find().then((pocketsResult)=>{
             if(pocketsResult){
               final=[]
@@ -46,14 +47,16 @@ const PocketsController = {}
             }
             Pockets.updateOne({_id: pocket1._id},pocket1)
             Pockets.updateOne({_id: pocket2._id},pocket2)
-            res.status(200).json(Pockets)
+            const final = this.getPockets()
+            res.status(200).json(final)
           }else{
             const pocket1 = Pockets.findById(req.body.id1);
             if(pocket1){
               pocket1.saldo = pocket1.saldo - req.body.valor;
             }
             Pockets.updateOne({_id: pocket1._id},pocket1);
-            res.status(200).json(Pockets);
+            const final = this.getPockets()
+            res.status(200).json(final);
 
           }
         }
