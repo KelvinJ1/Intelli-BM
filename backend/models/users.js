@@ -9,7 +9,7 @@ const UsersSchema = mongoose.Schema({
    email:{type: String, unique:true},
    accNumber: Number,
    address: String,
-   cargo:String,},
+   },
 {timestamps: true}
 );
 

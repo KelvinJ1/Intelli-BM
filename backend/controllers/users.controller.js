@@ -63,10 +63,20 @@ const UsersController = {}
 
 
                 //put (editar usuario)
-                UsersController.editUser= async(req,res)=>{
-                    //encunetra usuario por el Id y edita los campos enviados en el body
-                await Users.updateOne(req.params._id, req.body);
-                    res.status(200).json("Usuario actualizado");
+                UsersController.editUser=(req,res)=>{
+                    const user = new Users({_id: req.body.id,
+                                            rol: req.body.rol,
+                                            name: req.body.name,
+                                            password: req.body.password,
+                                            phone: req.body.phone,
+                                            email: req.body.email,
+                                            accNumber: req.body.accNumber,
+                                            address: req.body.address
+                    })
+                    Users.updateOne({_id: user.id},user).then((result)=>{
+                      res.status(200).json({message:'Actualizacion ejecutada'})
+                    })
+
                 };
 
 
