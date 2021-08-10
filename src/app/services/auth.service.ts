@@ -11,7 +11,8 @@ import { User } from '../models/user.model';
 })
 
 export class AuthService {
-users: User[]=[]
+pockets: Pocket[]=[];
+users: User[]=[];
 private token: string;
 private URL = "http://localhost:3000/api";
 private authStatusListener = new Subject<boolean>();
@@ -170,6 +171,12 @@ getUsersUpdateListener(){
       console.log(this.users)
       this.usersUpdated.next([...this.users])
       this.router.navigate(['/payroll'])
+    })
+  }
+
+  makeOperation(id1:string,valor:string,id2?:string){
+    this.http.put(this.URL+'/pockets/makeOperation',{id1:id1,valor:Number(valor),id2:id2}).subscribe((result)=>{
+      const updatedPocket = [...this.pockets];
     })
   }
 }

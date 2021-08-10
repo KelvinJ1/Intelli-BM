@@ -36,15 +36,26 @@ const PocketsController = {}
         }
 
         PocketsController.makeOperation = (req,res)=>{
-          const poke1 = Pockets.findById(req.body.id1);
-          const poke2 = Pockets.findById(req.body.id2);
-          if(poke1 && poke2){
-            poke1.saldo = poke1.saldo - req.body.valor;
-            poke2.saldo = poke2.saldo + req.body.valor;
+          const user = Pockets.findById( req.userData.userId)
+          if(user.rol=='admin'){
+            const pocket1 = Pockets.findById(req.body.id1);
+            const pocket2 = Pockets.findById(req.body.id2);
+            if(pocket1 && pocket2){
+              pocket1.saldo = pocket1.saldo - req.body.valor;
+              pocket2.saldo = pocket2.saldo + req.body.valor;
+            }
+            Pockets.updateOne({_id: pocket1._id},pocket1)
+            Pockets.updateOne({_id: pocket2._id},pocket2)
+            res.status(200).json(Pockets)
+          }else{
+            const pocket1 = Pockets.findById(req.body.id1);
+            if(pocket1){
+              pocket1.saldo = pocket1.saldo - req.body.valor;
+            }
+            Pockets.updateOne({_id: pocket1._id},pocket1);
+            res.status(200).json(Pockets);
+
           }
-          Pockets.updateOne({_id: poke1._id},poke1)
-          Pockets.updateOne({_id: poke2._id},poke2)
-          res.status(200).json({message:'Actulizacion completada'})
         }
 
 
