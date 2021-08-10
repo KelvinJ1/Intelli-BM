@@ -4,7 +4,7 @@
 
 <div class="flex-shrink min-w-80	transition-4  gap-12 md:flex flex-row flex-wrap justify-center justify-self-start items-center p-6  md:w-auto md:h-auto m-4 mt-2">
     <!--GENERAL  -->
-    <div class="transform hover:scale-125 transition duration-300 bg-gradient-to-l from-green-300 via-green-400 to-green-500 rounded-lg shadow-2xl flex flex-col  w-96 h-60 order-1 justify-center "> 
+    <div class="transform hover:scale-125 transition duration-300 bg-gradient-to-l from-green-300 via-green-400 to-green-500 rounded-lg shadow-2xl flex flex-col  w-96 h-60 order-1 justify-center ">
         <div class="  mt-20 rounded-lg  flex mx-auto   w-9/12 h-20 order-1 justify-center self-center items-center">
             <p class="flex  justify-self-center self-center m-0 p-0 text-4xl	 text-white font-bold">{{valGen}}</p>
         </div>
@@ -12,20 +12,20 @@
             <p class="flex justify-self-center self-end mb-2 p-0 text-4x1 text-white font-bold">GENERAL</p>
         </div>
     </div>
-    
+
     <!-- OTROS -->
     <div class="rounded-lg flex flex-col gap-2  w-96 h-60 order-2 justify-center ">
                 <!-- pink -->
                 <div class="transform hover:scale-125 transition duration-300 bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400  rounded-lg gap-2 shadow-2xl flex flex-col mx-auto my-0   box-border h-28 w-96 order-1 justify-center self-center items-center ">
                     <!-- val viaticos -->
                     <div class="p-0 rounded-lg  flex mx-auto   w-9/12 h-12 order-1 justify-center self-start mt-6 ">
-                        <p class="flex  justify-self-center self-center m-0 p-0 text-2xl	 text-white font-bold">{{valGen}}</p>
-                    </div>              
+                        <p class="flex  justify-self-center self-center m-0 p-0 text-2xl	 text-white font-bold">{{valVia}}</p>
+                    </div>
                     <!-- label viaticos -->
                      <div class="opacity-80 mb-2 rounded-lg  flex m-auto  w-60 h-10 order-2 justify-center items-end">
-                        <p class=" justify-self-center self-end flex  p-0 text-md text-white font-bold">VIÁTICOS</p> 
+                        <p class=" justify-self-center self-end flex  p-0 text-md text-white font-bold">VIÁTICOS</p>
                     </div>
-                </div> 
+                </div>
                 <!-- green -->
                 <div class="transform hover:scale-125 transition duration-300 bg-gradient-to-r from-pink-300 via-pink-400 to-pink-500 rounded-lg shadow-2xl gap-2 flex flex-col mx-auto my-0 box-border h-28 w-96   order-2 justify-center self-center items-end">
                     <!-- val nomina -->
@@ -34,10 +34,10 @@
                     </div>
                     <!-- label nomina -->
                     <div class="opacity-80 mb-2 rounded-lg  flex m-auto  w-60 h-10 order-2 justify-center items-end">
-                        <p class=" justify-self-center self-end flex  p-0 text-md text-white font-bold">NÓMINA</p> 
+                        <p class=" justify-self-center self-end flex  p-0 text-md text-white font-bold">NÓMINA</p>
                     </div>
                 </div>
-    </div>   
+    </div>
 </div>
 
 
@@ -47,7 +47,7 @@
 <div class="flex flex-wrap justify-center ">
     <!-- sizes w-6/12 h-60 -->
         <div class="transform hover:scale-125 transition duration-300 shadow-2xl rounded-2xl flex  order-1 justify-center items-center  w-auto h-auto m-10">
-        <ngx-charts-bar-vertical 
+        <ngx-charts-bar-vertical
         [view]="[500,300]"
         [results]="testData"
         [xAxisLabel]="'POCKETS'"
@@ -59,25 +59,24 @@
         [xAxis]="true"
         [yAxis]="true"
         [gradient]="true">
-    </ngx-charts-bar-vertical> 
-    
-    
+    </ngx-charts-bar-vertical>
+
+
     </div>
-      
+
     <div class="transform hover:scale-125 transition duration-300 shadow-2xl rounded-2xl m-10 flex order-2 justify-center items-center  w-auto h-auto">
     <ngx-charts-advanced-pie-chart
-    
+
         [view]="[500,300]"
         [results]="testData"
         [gradient]="true" >
     </ngx-charts-advanced-pie-chart>
-    
+
     </div>
-    
+
     <!-- BOTÓN -->
-    
+
     </div>
     <div class="flex justify-center  w-auto h-24 m-8 ">
         <input type="button" value="GENERAR REPORTE" class="flex transform hover:scale-125 transition duration-300 rounded-lg bg-gray-800 w-60 h-20 self-center justify-center font-bold text-white">
       </div>
-  
