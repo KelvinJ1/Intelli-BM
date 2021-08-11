@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddEditComponent implements OnInit {
 
+close=true;
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
+closeModal(){
+
+return this.close=!this.close;
+
+
+}
+
+
 
 }

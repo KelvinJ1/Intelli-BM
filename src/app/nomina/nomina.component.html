@@ -1,5 +1,8 @@
 
-<div class="m-auto my-40 table w-4/5 p-2">
+<div class="m-auto mt-20  mb-10 table w-4/5 p-2 ">
+
+   
+    
     <table class="w-full border ">
         <thead>
             <tr class="bg-gray-50 border-b ">
@@ -87,10 +90,15 @@
         </tbody>
     </table>
 
+</div>
 
+<div *ngIf="show">
+    <app-add-edit></app-add-edit>
 
 </div>
+   
+
 <div class="flex justify-end  w-4/5 m-auto">
     <button class="transform hover:scale-125 transition duration-300 rounded-lg flex justify-center items-center bg-indigo-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">GENERAR PAGO</button>
-    <button  class="transform hover:scale-125 transition duration-300 rounded-lg flex justify-center items-center bg-green-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">AÑADIR</button>
+    <button (click)="showModal()"  class="transform hover:scale-125 transition duration-300 rounded-lg flex justify-center items-center bg-green-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">AÑADIR</button>
 </div>

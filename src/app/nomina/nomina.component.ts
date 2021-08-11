@@ -13,6 +13,7 @@ import { AuthService } from '../services/auth.service';
 export class NominaComponent implements OnInit {
 
   private usersSub: Subscription
+  show=false;
   users: User[]=[];
 
   constructor(private authService: AuthService) {
@@ -34,4 +35,14 @@ export class NominaComponent implements OnInit {
       this.users=users
     })
   }
+
+showModal(){
+
+return this.show=!this.show;
+
+}
+
+
+
+
 }

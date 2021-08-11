@@ -1,10 +1,10 @@
-<div class="flex justify-center h-screen items-center bg-gray-400 antialiased z-30 ">
-    <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
+<div *ngIf="close" class="box-border p-12  z-10 fixed top-0 w-full h-screen bg-gray-300 bg-opacity-40 rounded-lg">
+    <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto mt-20 rounded-xl  border border-gray-300 shadow-xl">
       <div
         class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
       >
         <p class="font-semibold text-gray-800">Agregar usuario</p>
-        <svg
+        <svg (click)="closeModal()"
           class="w-6 h-6"
           fill="none"
           stroke="currentColor"
@@ -95,10 +95,11 @@
       <div
         class="flex flex-row items-center justify-between p-5 bg-white border-t border-gray-200 rounded-bl-lg rounded-br-lg"
       >
-        <p class="font-semibold text-gray-600">Cancel</p>
+        <p (click)="closeModal()" class="font-semibold text-gray-600">Cancel</p>
         <button class="px-4 py-2 text-white font-semibold bg-blue-500 rounded">
           Save
         </button>
       </div>
     </div>
   </div>
+</div>
