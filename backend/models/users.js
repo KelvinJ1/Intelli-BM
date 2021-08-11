@@ -8,8 +8,7 @@ const UsersSchema = mongoose.Schema({
    phone:{type: String},
    email:{type: String, unique:true},
    accNumber: Number,
-   address: String,
-   cargo:String,},
+   address: String,},
 {timestamps: true}
 );
 

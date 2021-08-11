@@ -90,7 +90,6 @@ const UsersController = {}
                                 final.push(usersResult[i])
                             }
                         }
-
                         res.status(200).json(final)
                     }else{
                         res.status(400).json({message:'no encontrado'})

@@ -38,15 +38,7 @@ this.authService.signIn(form.value.email, form.value.password);
 ;
 }
 
-message(){
 
-  if (this.authService.getToken()){
-    this.isAuth=true;
-
-  }
-  this.isAuth=false;
-
-}
 
 
 

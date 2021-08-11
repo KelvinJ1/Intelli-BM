@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AddEditComponent } from '../add-edit/add-edit.component';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
 
