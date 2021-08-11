@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Pocket } from '../models/pocket.model';
 import { AuthService } from '../services/auth.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-pockets',
@@ -36,6 +37,10 @@ export class EditPocketsComponent implements OnInit {
     this.valGen= Number(this.pockets[0].saldo)
     this.valVia= Number(this.pockets[1].saldo)
     this.valNom= Number(this.pockets[2].saldo)
+  }
+
+  makeOperation(form: NgForm,pocketId:string){
+    this.authService.makeOperation(this.pockets[0].id,form.value.valor,pocketId)
   }
 
 

@@ -174,9 +174,12 @@ getUsersUpdateListener(){
     })
   }
 
-  makeOperation(id1:string,valor:string,id2?:string){
-    this.http.put(this.URL+'/pockets/makeOperation',{id1:id1,valor:Number(valor),id2:id2}).subscribe((result)=>{
-      const updatedPocket = [...this.pockets];
+  makeOperation(id1:string,valor:number,id2?:string){
+
+    this.http.put(this.URL+'/pockets/makeOperation',{id1:id1,valor:valor,id2:id2}).subscribe((result)=>{
+      console.log(result)
+      this.router.navigate(['/managment'])
     })
+
   }
 }

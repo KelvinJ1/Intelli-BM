@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddEditComponent } from './add-edit/add-edit.component';
 import { AuthGuard } from './auth/auth.guard';
 import { EditPocketsComponent } from './edit-pockets/edit-pockets.component';
 import { InformeComponent } from './informe/informe.component';
@@ -20,7 +21,7 @@ const routes: Routes = [
 
 {path:"editpockets", component:EditPocketsComponent,},
 
-{path:"test", component:EditPocketsComponent,},
+{path:"add-edit", component:AddEditComponent,},
 
 
 

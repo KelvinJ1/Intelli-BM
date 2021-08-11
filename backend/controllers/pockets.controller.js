@@ -1,4 +1,5 @@
 const Pockets = require('../models/pockets');
+const Users = require('../models/users');
 const jwt = require('jsonwebtoken')
 
 const key = "probando__::5896"
@@ -37,28 +38,45 @@ const PocketsController = {}
         }
 
         PocketsController.makeOperation = (req,res)=>{
-          const user = Pockets.findById( req.userData.userId)
-          if(user.rol=='admin'){
-            const pocket1 = Pockets.findById(req.body.id1);
-            const pocket2 = Pockets.findById(req.body.id2);
-            if(pocket1 && pocket2){
-              pocket1.saldo = pocket1.saldo - req.body.valor;
-              pocket2.saldo = pocket2.saldo + req.body.valor;
-            }
-            Pockets.updateOne({_id: pocket1._id},pocket1)
-            Pockets.updateOne({_id: pocket2._id},pocket2)
-            const final = this.getPockets()
-            res.status(200).json(final)
-          }else{
-            const pocket1 = Pockets.findById(req.body.id1);
-            if(pocket1){
-              pocket1.saldo = pocket1.saldo - req.body.valor;
-            }
-            Pockets.updateOne({_id: pocket1._id},pocket1);
-            const final = this.getPockets()
-            res.status(200).json(final);
+          Users.findById(req.userData.userId).then((resutl)=>{
 
-          }
+            if(resutl.rol=='admin'){
+
+
+              Pockets.findById(req.body.id1).then((p1)=>{
+                let pocket1 = p1;
+                pocket1.saldo = Number(pocket1.saldo)-req.body.valor
+                Pockets.updateOne({_id:pocket1._id},pocket1).then((rea)=>{
+                  console.log('p1')
+
+                })
+              })
+
+              Pockets.findById(req.body.id2).then((p2)=>{
+                let pocket2 = p2;
+                pocket2.saldo = Number(pocket2.saldo)+req.body.valor
+                Pockets.updateOne({_id:pocket2._id},pocket2).then((rea)=>{
+                  console.log('p2')
+
+                })
+              })
+              res.status(200).json({message:'Actualizacion ejecutada.'})
+
+            }else{
+              Pockets.findById(req.body.id1).then((p1)=>{
+                let pocket1 = p1;
+                pocket1.saldo = Number(pocket1.saldo)-req.body.valor
+                Pockets.updateOne({_id:pocket1._id},pocket1).then((rea)=>{
+                  console.log(rea)
+                })
+              })
+              res.status(200).json({message:'Actualizacion ejecutada.'})
+
+            }
+
+          })
+
+
         }
 
 
