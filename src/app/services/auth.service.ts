@@ -131,8 +131,8 @@ getPocketsValues(){
       }
     })
   })).subscribe((dataTrasformed)=>{
-    const pockets = dataTrasformed;
-    this.pocketUpdated.next([...pockets]);
+    this.pockets = dataTrasformed;
+    this.pocketUpdated.next([...this.pockets]);
   })
 }
 
@@ -178,7 +178,10 @@ getUsersUpdateListener(){
 
     this.http.put(this.URL+'/pockets/makeOperation',{id1:id1,valor:valor,id2:id2}).subscribe((result)=>{
       console.log(result)
-      this.router.navigate(['/managment'])
+      this.getPocketsValues()
+
+      this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["managment"]));
     })
 
   }
