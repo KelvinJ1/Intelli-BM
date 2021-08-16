@@ -12,6 +12,8 @@ import { AstMemoryEfficientTransformer } from '@angular/compiler';
 })
 export class SideMenuComponent implements OnInit {
 
+
+
   isAuth = false;
   private authListenerSub!: Subscription;
 
@@ -25,6 +27,7 @@ export class SideMenuComponent implements OnInit {
     this.authListenerSub = this.authService.getAuthStatusListener()
     .subscribe((isAuthenticated)=>{
       this.isAuth = isAuthenticated;
+     
      
      
    

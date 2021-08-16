@@ -1,24 +1,24 @@
 
-
-<div class="m-auto h-3/4 bg-white w-1/3  px-0 border-2 mt-24 font-body" id="invoice">
-
-  <header class="bg-gray-200 border-b-2 border-gray-300 shadow-md w-auto flex flex-col m-auto p-6 mb-2 mt-0">
+<div  *ngIf="close" (click)="closeModal()"  class="box-border p-0  z-10 fixed top-0 w-full h-screen bg-gray-300 bg-opacity-40 rounded-lg">
+<div class=" m-auto h-auto bg-white w-1/3  px-0 border-2 mt-24 font-body" >
+<div class="h-auto" id="invoice">
+  <header class="bg-gray-300 bg-opacity-50 border-b-2 border-gray-300 shadow-md w-auto flex flex-col m-auto p-6 mb-2 mt-0">
           <img src="../../assets/intelliLogo.png" class="flex w-56 h-20 justify-self-start">
           <h1 class="flex m-auto text-gray-600 font-extrabold  text-4xl">REPORTE</h1>
   </header>
   
-  <div class="flex flex-col w-auto m-auto  justify-items-center text-gray-700 font-semibold text-xl p-6">
+  <div class="flex flex-col w-auto m-auto  justify-items-center text-gray-800 font-bold text-xl p-6">
   
-  <h4>Fecha:{{" "+VALUE}}</h4>
-  <h4>Ciudad: {{" "+VALUE}}</h4>
+  <h4>FECHA:</h4>
+  <h6 class="text-gray-500 font-semibold">{{fecha}}</h6>
   </div>
   
   <hr class="h-0.5 bg-gray-300 shadow-md" >
   
   
-  <div class="m-auto rounded-2xl  flex order-2 justify-center items-center  w-3/4 h-auto mb-2">
+  <div class="m-auto rounded-2xl  flex order-2 justify-center items-center  w-3/4 h-auto ">
       <ngx-charts-advanced-pie-chart
-          [view]="[600,300]"
+          [view]="[700,300]"
           [results]="testData"
           [gradient]="true" >
       </ngx-charts-advanced-pie-chart>
@@ -45,9 +45,19 @@
           <h3 class=" ml-60">{{VALUE}} </h3>  
   
       </span>
-  
+      
+  </div>
+</div>
+  <hr class="h-0.5  bg-gray-300 shadow-md" >
+  <div
+  class="mt-10 flex flex-row items-center justify-between p-5  rounded-bl-lg rounded-br-lg"
+>
+  <p (click)="closeModal()" class="font-bold text-gray-600">Cancel</p>
+  <button (click)="PDF()" class="px-4 py-2 text-white font-bold bg-blue-500 rounded" >
+    Download
+  </button>
+</div>
   
   </div>
-  
-  </div>
-  
+ 
+</div>

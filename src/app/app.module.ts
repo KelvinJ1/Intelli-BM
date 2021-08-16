@@ -27,7 +27,7 @@ import { AddEditComponent } from './add-edit/add-edit.component';
     EditPocketsComponent,
     MonitoringComponent,
     NominaComponent,
-    AddEditComponent
+    AddEditComponent,
   ],
   imports: [
     BrowserModule,

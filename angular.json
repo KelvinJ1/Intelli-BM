@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "html2pdf.js"
+          ],
             "outputPath": "dist/Intelli-BM",
             "index": "src/index.html",
             "main": "src/main.ts",

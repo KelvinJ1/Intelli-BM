@@ -67,6 +67,15 @@ signIn(email:string, password:string){
     });
 }
 
+addUser(rol: string, name:string, password:string,
+  phone:string, email:string, accNumber: number, address: string, ){
+this.http.post<any>(this.URL+"/register",{rol,name, password, phone,email, accNumber,address,}).subscribe((response)=>{
+console.log("guardado exitosamente")
+
+})
+
+}
+
 logout(){
   this.token=" ";
   this.isAuthenticated= false;
@@ -107,17 +116,16 @@ if (!authInfo) {
 const now=new Date();
 const expiresIn = authInfo.expirationDate.getTime()- now.getTime();
 if (expiresIn>0) {
-
     this.token = localStorage.getItem("token")!;
     this.isAuthenticated = true;
     this.setAuthTimer(expiresIn/1000);
     this.authStatusListener.next(true);
     this.router.navigate(["/monitoring"])
-
-
 }
 
 }
+
+
 getPocketsValues(){
   this.http.get<any>(this.URL+'/pockets/getPockets').pipe(map((pocketData)=>{
     return pocketData.map((pocket:{_id: string,name: string,saldo: string,duenio: string})=>{
@@ -126,7 +134,6 @@ getPocketsValues(){
         name: pocket.name,
         saldo: Number(pocket.saldo),
         duenio: pocket.duenio
-
       }
     })
   })).subscribe((dataTrasformed)=>{

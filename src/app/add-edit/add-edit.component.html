@@ -19,48 +19,51 @@
           ></path>
         </svg>
       </div>
+      <form (submit)="addUser(agregarForm)" #agregarForm='ngForm'>
       <div class="flex flex-col px-6 py-5 bg-gray-50">
         <p class="mb-2 font-semibold text-gray-700">Name</p>
         <input
           type="text"
-          name=""
-          class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10"
-          id=""
+          name="name"
+          class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10" [(ngModel)]="user.name"  
+         
         >
         <p class="mb-2 font-semibold text-gray-700">E-mail</p>
         <input
         type="email"
-        name=""
-        class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10"
-        id=""
+        name="email"
+        class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10" [(ngModel)]="user.email"  
+        
       >
       <p class="mb-2 font-semibold text-gray-700">Password</p>
       <input
       type="password"
-      name=""
-      class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10"
-      id=""
+      name="password" autocomplete="off"
+      class="p-2 mb-2 bg-white border border-gray-200 rounded shadow-sm h-10" [(ngModel)]="user.password"  
+  
     >
         <div class="flex flex-col sm:flex-row items-center mb-5 sm:space-x-5">
           <div class="w-full sm:w-1/2">
             <p class="mb-2 font-semibold text-gray-700">Rol</p>
             <select
               type="text"
-              name=""
-              class="w-full p-2 bg-white border border-gray-200 rounded shadow-sm appearance-none"
-              id=""
+              name="rol"
+              class="w-full p-2 bg-white border border-gray-200 rounded shadow-sm appearance-none" [(ngModel)]="user.rol"  
+              
             >
-            <option value="0">User</option>
-              <option value="0">Admin</option>
+            <option value="user">User</option>
+              <option value="admin">Admin</option> 
             </select>
           </div>
+
+
           <div class="w-full sm:w-1/2 mt-2 sm:mt-0">
-            <p class="mb-2 font-semibold text-gray-700">Phone</p>
+            <p class="mb-2 font-semibold text-gray-700">Phone</p> 
             <input
               type="tel"
-              name=""
-              class="w-full p-2 bg-white border border-gray-200 rounded shadow-sm appearance-none"
-              id=""
+              name="phone"
+              class="w-full p-2 bg-white border border-gray-200 rounded shadow-sm appearance-none" [(ngModel)]="user.phone" 
+        
               minlength="10"
             >
              
@@ -73,10 +76,10 @@
             <div class="w-full sm:w-1/2">
               <p class="mb-2 font-semibold text-gray-700">Account number</p>
               <input
-                type="text"
-                name=""
-                class="w-full p-2 bg-white border border-gray-200 rounded shadow-sm appearance-none"
-                id=""
+                type="number"
+                name="accNumber"
+                class="w-full p-2 bg-white border border-gray-200 rounded shadow-sm appearance-none" [(ngModel)]="user.accNumber"  
+                
               >
 
             </div>
@@ -84,9 +87,8 @@
               <p class="mb-2 font-semibold text-gray-700">Address</p>
               <input
                 type="text"
-                name=""
-                class="w-full p-2 bg-white border border-gray-200 rounded shadow-sm appearance-none"
-                id=""
+                name="address"
+                class="w-full p-2 bg-white border border-gray-200 rounded shadow-sm appearance-none" [(ngModel)]="user.address"  
                 minlength="10"
               >
                
@@ -96,10 +98,13 @@
         class="flex flex-row items-center justify-between p-5 bg-white border-t border-gray-200 rounded-bl-lg rounded-br-lg"
       >
         <p (click)="closeModal()" class="font-semibold text-gray-600">Cancel</p>
-        <button class="px-4 py-2 text-white font-semibold bg-blue-500 rounded">
+        <button type="submit" class="px-4 py-2 text-white font-semibold bg-blue-500 rounded" value="Save">
           Save
         </button>
       </div>
     </div>
+  </form>
   </div>
 </div>
+
+

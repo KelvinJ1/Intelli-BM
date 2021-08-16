@@ -25,7 +25,7 @@ const UsersController = {}
                         email:req.body.email,
                         accNumber:req.body.accNumber,
                         address:req.body.address,
-                        cargo: req.body.cargo});
+                       });
                     newUser.save()
                     .then(result => {res.status(201).json({message:"User created succesfully", result:result});
                     })
