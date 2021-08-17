@@ -13,12 +13,14 @@ import { User } from '../models/user.model';
 export class AuthService {
 pockets: Pocket[]=[];
 users: User[]=[];
+user!: User;
 private token: string;
 private URL = "http://localhost:3000/api";
 private authStatusListener = new Subject<boolean>();
 private isAuthenticated = false;
 pocketUpdated = new Subject<Pocket[]>();
 usersUpdated = new Subject<User[]>();
+userUpdated = new Subject<User>();
 
 
 
@@ -170,7 +172,8 @@ getUsersUpdateListener(){
       this.users = updatedUser;
       console.log(this.users)
       this.usersUpdated.next([...this.users])
-      this.router.navigate(['/payroll'])
+      this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["payroll"]));
     })
   }
 
@@ -185,4 +188,45 @@ getUsersUpdateListener(){
     })
 
   }
+
+  getUserEdit(id:string){
+    this.http.post<any>(this.URL +'/getUserEdit',{id:id}).subscribe((result)=>{
+      const userEd={
+        id:result._id,
+        rol: result.rol,
+        name:result.name,
+        password:result.password,
+        phone:result.phone,
+        email:result.email,
+        accNumber: result.accNumber,
+        address: result.address}
+      this.user =userEd
+      this.userUpdated.next(this.user)
+    })
+
+
+  }
+  getUserUpdateListener(){
+    return this.userUpdated.asObservable();
+  }
+
+  editUser(id: string, rol: string, name:string, password:string, phone:string, email:string, accNumber: number, address: string){
+    this.http.put<any>(this.URL+'/editUser',{id,rol,name,password,phone,email,accNumber,address}).subscribe((result)=>{
+      const userEd={
+        id:result._id,
+        rol: result.rol,
+        name:result.name,
+        password:result.password,
+        phone:result.phone,
+        email:result.email,
+        accNumber: result.accNumber,
+        address: result.address}
+      this.user=userEd;
+      this.userUpdated.next(this.user)
+      this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["payroll"]));
+
+    })
+  }
+
 }

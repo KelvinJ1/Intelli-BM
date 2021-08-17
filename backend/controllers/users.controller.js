@@ -108,5 +108,15 @@ const UsersController = {}
                     })
                     }
 
+                UsersController.getUserEdit = (req,res) =>{
+                    Users.findById(req.body.id).then((userResult)=>{
+                      if(userResult){
+                        res.status(200).json(userResult)
+                      }else{
+                        res.status(400).json({message:'User no encontrado con el id enviado'});
+                      }
+                    })
+                  }
+
 
 module.exports= UsersController;

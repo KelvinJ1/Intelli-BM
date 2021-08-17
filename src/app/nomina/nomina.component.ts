@@ -12,13 +12,19 @@ import { AuthService } from '../services/auth.service';
 export class NominaComponent implements OnInit {
 
   private usersSub: Subscription
+
+  show=false;
+  showEdit=false;
   users: User[]=[];
+  close=true;
+  userEditId=''
 
   constructor(private authService: AuthService) {
     this.authService.getUsersValues()
     this.usersSub=this.authService.getUsersUpdateListener().subscribe((users:User[])=>{
       this.users=users
     })
+
    }
 
   ngOnInit(): void {
@@ -33,4 +39,15 @@ export class NominaComponent implements OnInit {
       this.users=users
     })
   }
+
+  showModal(){
+
+    return this.show=!this.show;
+  }
+
+  showModalEdit(id:string){
+    this.userEditId= id
+    return this.showEdit=!this.showEdit
+  }
+
 }

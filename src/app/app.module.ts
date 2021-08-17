@@ -14,6 +14,7 @@ import { EditPocketsComponent } from './edit-pockets/edit-pockets.component';
 import { MonitoringComponent } from './monitoring/monitoring.component';
 import { NominaComponent } from './nomina/nomina.component';
 import { AddEditComponent } from './add-edit/add-edit.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 
@@ -27,7 +28,8 @@ import { AddEditComponent } from './add-edit/add-edit.component';
     EditPocketsComponent,
     MonitoringComponent,
     NominaComponent,
-    AddEditComponent
+    AddEditComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

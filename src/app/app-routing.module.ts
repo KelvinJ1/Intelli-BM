@@ -17,11 +17,11 @@ const routes: Routes = [
 ,
 {path:"managment", component:EditPocketsComponent, canActivate: [AuthGuard]},
 
-{path:"payroll", component:NominaComponent,},
+{path:"payroll", component:NominaComponent,canActivate: [AuthGuard]},
 
 {path:"editpockets", component:EditPocketsComponent,},
 
-{path:"add-edit", component:AddEditComponent,},
+{path:"add-edit", component:AddEditComponent,canActivate: [AuthGuard]},
 
 
 
