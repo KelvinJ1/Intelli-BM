@@ -13,12 +13,14 @@ export class EditPocketsComponent implements OnInit {
 
   private pocketSub: Subscription;
   pockets: Pocket[]=[];
+  userRol='';
   valGen=0;
   valNom=0;
   valVia=0;
 
 
   constructor(private authService:AuthService) {
+    this.userRol=localStorage.getItem('rol')!;
     this.authService.getPocketsValues()
     this.pocketSub = this.authService.getPocketsUpdateListener().subscribe((pockets:Pocket[])=>{
       this.pockets = pockets
@@ -27,6 +29,7 @@ export class EditPocketsComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.userRol=localStorage.getItem('rol')!;
     this.authService.getPocketsValues()
     this.pocketSub = this.authService.getPocketsUpdateListener().subscribe((pockets:Pocket[])=>{
       this.pockets = pockets

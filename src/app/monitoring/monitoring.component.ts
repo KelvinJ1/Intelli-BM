@@ -53,11 +53,16 @@ export class MonitoringComponent implements OnInit {
 
     this.label1=this.pockets[0].name
     this.label2=this.pockets[1].name
-    this.label3=this.pockets[2].name
+    if(this.userRol=='admin'){
+      this.label3=this.pockets[2].name
+    }
 
     this.valPocket1= Number(this.pockets[0].saldo)
+    console.log(this.valPocket1)
     this.valPocket2= Number(this.pockets[1].saldo)
-    this.valPocket3= Number(this.pockets[2].saldo)
+    if(this.userRol=='admin'){
+      this.valPocket3= Number(this.pockets[2].saldo)
+    }
   }
 
   testData=[
