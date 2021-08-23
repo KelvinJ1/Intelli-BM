@@ -51,7 +51,7 @@ return this.isAuthenticated;
 
 
 signIn(email:string, password:string){
-  this.http.post<{token:string, expiresIn:number}>(this.URL + "/signin", {email,password})
+  this.http.post<{token:string, expiresIn:number,rol:string}>(this.URL + "/signin", {email,password})
     .subscribe((response)=>{
     this.token = response.token;
     if (this.token) {
@@ -62,7 +62,7 @@ signIn(email:string, password:string){
       const now = new Date();
       const expirationDate = new Date(now.getTime()+expirationInDuration*1000);
       console.log(expirationDate);
-      this.saveAuthData(this.token, expirationDate);
+      this.saveAuthData(this.token, expirationDate, response.rol);
       this.router.navigate(["/monitoring"])
 
 
@@ -78,23 +78,26 @@ logout(){
   this.router.navigate(["/"])
 }
 
-private saveAuthData (token: string, expirationDate: Date){
+private saveAuthData (token: string, expirationDate: Date, rol:string){
   localStorage.setItem("token", token);
   localStorage.setItem("expiration", expirationDate.toISOString());
+  localStorage.setItem("rol", rol );
 }
 
 private clearAuthData (){
   localStorage.removeItem("token");
   localStorage.removeItem("expiration");
+  localStorage.removeItem("rol");
 }
 
 private getAuthData(){
 const token = localStorage.getItem("token");
 const expirationDate = new Date(localStorage.getItem("expiration")!);
-if (!token ||!expirationDate) {
+const rolStorage = localStorage.getItem('rol')
+if (!token ||!expirationDate||!rolStorage) {
   return;
 }
-return{token: token, expirationDate: expirationDate};
+return{token: token, expirationDate: expirationDate,rol:rolStorage};
 }
 
 private setAuthTimer(duration:number){

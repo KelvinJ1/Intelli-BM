@@ -13,6 +13,8 @@ import { AstMemoryEfficientTransformer } from '@angular/compiler';
 export class SideMenuComponent implements OnInit {
 
   isAuth = false;
+  userRol='';
+
   private authListenerSub!: Subscription;
 
 
@@ -22,19 +24,30 @@ export class SideMenuComponent implements OnInit {
   ngOnInit(): void {
     //added to inform the renderized component that the token is still on
     this.isAuth=this.authService.getisAuthenticated();
+    this.userRol= localStorage.getItem('rol')!
     this.authListenerSub = this.authService.getAuthStatusListener()
     .subscribe((isAuthenticated)=>{
       this.isAuth = isAuthenticated;
-     
-     
-   
-    }); 
+
+
+
+
+    });
   }
+
+  isAdmin(){
+    if(this.userRol=='user'){
+      return false
+    }else{
+      return true
+    }
+  }
+
 
 //para salir
 onLogout(): void {
 this.authService.logout();
-};  
+};
 
 
 

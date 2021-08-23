@@ -52,8 +52,8 @@ const UsersController = {}
                         return res.status(401).json({message: "Unauthorized, password does not match"});
                     }
                     //checks in the given email, id, secKey(envVAR),expiration time
-                const token=jwt.sign({email:userGet.email, userId: userGet._id}, key, {expiresIn:"1h"});
-                    res.status(200).json({token: token, expiresIn: 3600});
+                const token=jwt.sign({email:userGet.email, userId: userGet._id, rol: userGet.rol}, key, {expiresIn:"1h"});
+                    res.status(200).json({token: token, expiresIn: 3600,rol: userGet.rol});
                     })
                     .catch((err =>{
                         return res.status(401).json({message:"Authentication failed, token error"});
