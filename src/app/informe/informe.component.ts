@@ -1,5 +1,5 @@
 import { Element } from '@angular/compiler/src/render3/r3_ast';
-import { Component, OnInit, Type } from '@angular/core';
+import { Component, OnInit, Type, Input } from '@angular/core';
 import * as html2pdf from "html2pdf.js";
 
 @Component({
@@ -10,17 +10,12 @@ import * as html2pdf from "html2pdf.js";
 
 
 export class InformeComponent implements OnInit {
+@Input() dataEntrante:any;
 
 close=true;
 VALUE= "3000";
 fecha= Date();
-testData=[
-  
-  {name: "General", value: 45000000},
-  {name: "Nómina", value: 5000000},
-  {name: "Viáticos", value: 4000000},
-  
-  ];
+
   
 
   constructor() {
@@ -29,6 +24,9 @@ testData=[
    }
 
   ngOnInit(): void {
+
+    console.log(this.dataEntrante)
+
   }
 
   

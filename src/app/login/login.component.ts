@@ -15,24 +15,38 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   user: User;
-
   isAuth=false;
-
+alerta=false
   constructor(private authService: AuthService,
     // private router: Router,
 
-    ) {this.user={id:'',rol:'',name:'',email:"", password:"",phone:'',accNumber:0,address:''} }
+    ) {this.user={id:'',rol:'',name:'',email:"", password:"",phone:'',accNumber:0,address:''} 
+    this.alerta=this.authService.alerta
+  
+  }
 
   ngOnInit(): void {
 
   }
+
+
+
+  
 
   signIn(form: NgForm) {
 if (form.invalid) {
   return console.log("formulario inválido");
 
 }
-this.authService.signIn(form.value.email, form.value.password);
+
+try {this.authService.signIn(form.value.email, form.value.password);
+  
+} catch (error) {
+  this.alerta=true
+  console.log(this.alerta)
+  
+}
+
 ;
 }
 

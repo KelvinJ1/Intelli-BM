@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
-import {  HttpClient} from "@angular/common/http";
-import { Subject } from 'rxjs';
-import {map} from 'rxjs/operators'
+import {  HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {  Subject, throwError } from 'rxjs';
+import {catchError, map} from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { Pocket } from '../models/pocket.model';
 import { User } from '../models/user.model';
+import { error } from '@angular/compiler/src/util';
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
+
 users: User[]=[]
+private pockets: Pocket[]=[];
 private token: string;
 private URL = "http://localhost:3000/api";
 private authStatusListener = new Subject<boolean>();
 private isAuthenticated = false;
+alerta=false;
 pocketUpdated = new Subject<Pocket[]>();
 usersUpdated = new Subject<User[]>();
-
 
 
 
@@ -26,6 +30,7 @@ usersUpdated = new Subject<User[]>();
       this.token = "";
   }
 
+  
 
 getToken(){
   return this.token;
@@ -44,8 +49,7 @@ return this.isAuthenticated;
 
 }
 
-
-
+  
 
 signIn(email:string, password:string){
   this.http.post<{token:string, expiresIn:number}>(this.URL + "/signin", {email,password})
@@ -59,12 +63,13 @@ signIn(email:string, password:string){
       const now = new Date();
       const expirationDate = new Date(now.getTime()+expirationInDuration*1000);
       console.log(expirationDate);
+     
       this.saveAuthData(this.token, expirationDate);
       this.router.navigate(["/monitoring"])
-
-
     }
-    });
+    },error=>{alert("Contraseña o usuario incorrecto")
+    }
+    );
 }
 
 addUser(rol: string, name:string, password:string,
@@ -137,8 +142,8 @@ getPocketsValues(){
       }
     })
   })).subscribe((dataTrasformed)=>{
-    const pockets = dataTrasformed;
-    this.pocketUpdated.next([...pockets]);
+     this.pockets = dataTrasformed;
+    this.pocketUpdated.next([...this.pockets]);
   })
 }
 
@@ -179,4 +184,12 @@ getUsersUpdateListener(){
       this.router.navigate(['/payroll'])
     })
   }
+
+
+
+ 
+
+
+
+
 }

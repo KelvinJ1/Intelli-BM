@@ -19,7 +19,7 @@
                 <div class="transform hover:scale-125 transition duration-300 bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400  rounded-lg gap-2 shadow-2xl flex flex-col mx-auto my-0   box-border h-28 w-96 order-1 justify-center self-center items-center ">
                     <!-- val viaticos -->
                     <div class="p-0 rounded-lg  flex mx-auto   w-9/12 h-12 order-1 justify-center self-start mt-6 ">
-                        <p class="flex  justify-self-center self-center m-0 p-0 text-2xl	 text-white font-bold">{{valGen}}</p>
+                        <p class="flex  justify-self-center self-center m-0 p-0 text-2xl	 text-white font-bold">{{valVia}}</p>
                     </div>              
                     <!-- label viaticos -->
                      <div class="opacity-80 mb-2 rounded-lg  flex m-auto  w-60 h-10 order-2 justify-center items-end">
@@ -41,18 +41,18 @@
 </div>
 
 <div *ngIf="show">
-    <app-informe></app-informe>
+    <app-informe [dataEntrante]="testData2"></app-informe>
 
 </div>
 
 <!-- CHARTS -->
 
-<div class="flex flex-wrap justify-center ">
+<div  class="flex flex-wrap justify-center ">
     <!-- sizes w-6/12 h-60 -->
         <div class="transform hover:scale-125 transition duration-300 shadow-2xl rounded-2xl flex  order-1 justify-center items-center  w-auto h-auto m-10">
         <ngx-charts-bar-vertical 
         [view]="[500,300]"
-        [results]="testData"
+        [results]="testData2"
         [xAxisLabel]="'POCKETS'"
         [legendTitle]="'on-live'"
         [yAxisLabel]="'AMOUNT'"
@@ -71,7 +71,7 @@
     <ngx-charts-advanced-pie-chart
     
         [view]="[500,300]"
-        [results]="testData"
+        [results]="testData2"
         [gradient]="true" >
     </ngx-charts-advanced-pie-chart>
     

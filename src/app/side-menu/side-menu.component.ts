@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { AstMemoryEfficientTransformer } from '@angular/compiler';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-side-menu',
@@ -12,7 +13,7 @@ import { AstMemoryEfficientTransformer } from '@angular/compiler';
 })
 export class SideMenuComponent implements OnInit {
 
-
+  user!:User[];
 
   isAuth = false;
   private authListenerSub!: Subscription;
@@ -27,6 +28,7 @@ export class SideMenuComponent implements OnInit {
     this.authListenerSub = this.authService.getAuthStatusListener()
     .subscribe((isAuthenticated)=>{
       this.isAuth = isAuthenticated;
+    
      
      
      
