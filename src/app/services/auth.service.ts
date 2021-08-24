@@ -232,4 +232,19 @@ getUsersUpdateListener(){
     })
   }
 
+  viaticos(id:string){
+    this.http.put(this.URL+"/pockets/viaticos",{id:id}).subscribe((result)=>{
+      alert('Pago efectuado.')
+
+    })
+
+  }
+
+  pagoUsers(){
+    this.http.put(this.URL+"/pockets/pagoUsers",{rol:'user'}).subscribe((result)=>{
+      alert('Pago efectuado.')
+
+    })
+
+  }
 }

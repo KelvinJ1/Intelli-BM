@@ -40,6 +40,16 @@ export class NominaComponent implements OnInit {
     })
   }
 
+  viaticos(id:string){
+    this.authService.viaticos(id);
+  }
+
+  pagoUsers(){
+    this.authService.pagoUsers();
+  }
+
+
+
   showModal(){
 
     return this.show=!this.show;

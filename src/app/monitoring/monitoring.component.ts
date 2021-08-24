@@ -58,7 +58,6 @@ export class MonitoringComponent implements OnInit {
     }
 
     this.valPocket1= Number(this.pockets[0].saldo)
-    console.log(this.valPocket1)
     this.valPocket2= Number(this.pockets[1].saldo)
     if(this.userRol=='admin'){
       this.valPocket3= Number(this.pockets[2].saldo)

@@ -39,11 +39,21 @@ export class EditPocketsComponent implements OnInit {
   setValues(){
     this.valGen= Number(this.pockets[0].saldo)
     this.valVia= Number(this.pockets[1].saldo)
-    this.valNom= Number(this.pockets[2].saldo)
+    if(this.userRol=='admin'){
+      this.valNom= Number(this.pockets[2].saldo)
+    }
   }
 
   makeOperation(form: NgForm,pocketId:string){
     this.authService.makeOperation(this.pockets[0].id,form.value.valor,pocketId)
+  }
+
+  isAdmin(){
+    if(this.userRol=='user'){
+      return false
+    }else{
+      return true
+    }
   }
 
 

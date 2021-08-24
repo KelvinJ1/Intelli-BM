@@ -15,6 +15,7 @@ export class SideMenuComponent implements OnInit {
   isAuth = false;
   userRol='';
 
+
   private authListenerSub!: Subscription;
 
 

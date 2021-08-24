@@ -1,6 +1,7 @@
 const Pockets = require('../models/pockets');
 const Users = require('../models/users');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const pockets = require('../models/pockets');
 
 const key = "probando__::5896"
 
@@ -79,6 +80,96 @@ const PocketsController = {}
 
         }
 
+        PocketsController.viaticos= (req,res)=>{
+          Pockets.find({duenio:req.body.id}).then((pocketsResult)=>{
+            if(pocketsResult){
+
+              for(let i =0; i< pocketsResult.length; i++){
+                if(pocketsResult[i].name=='VIÁTICOS ASIGNADOS'){
+                  let pocket1 = pocketsResult[i];
+                  pocket1.saldo = Number(pocket1.saldo) + 500000;
+                  Pockets.updateOne({_id:pocket1._id},pocket1).then((rea)=>{
+                    res.status(200).json({message:'Actualizacion ejecutada.'})
+                  })
+                }
+              }
+            }
+          })
+
+          Pockets.find({duenio:req.userData.userId}).then((pocketsResult)=>{
+            if(pocketsResult){
+
+              for(let i =0; i< pocketsResult.length; i++){
+                if(pocketsResult[i].name=='VIÁTICOS'){
+                  let pocket1 = pocketsResult[i];
+                  pocket1.saldo = Number(pocket1.saldo) - 500000;
+                  Pockets.updateOne({_id:pocket1._id},pocket1).then((rea)=>{
+                    console.log('resta')
+                  })
+                }
+              }
+            }
+
+          })
+
+        }
+
+        PocketsController.pagoUsers= (req,res)=>{
+
+          Users.find({rol:req.body.rol}).then((result)=>{
+            if(result){
+              let listUsers= result;
+              let vecesRestar=0;
+              for(let i = 0; i< listUsers.length;i++){
+
+                Pockets.find({duenio:listUsers[i]._id}).then((pocketsResult)=>{
+                  if(pocketsResult){
+                    for(let j =0; j< pocketsResult.length; j++){
+                      if(pocketsResult[j].name=='DISPONIBLE'){
+                        let pocket1 = pocketsResult[j];
+                        pocket1.saldo = Number(pocket1.saldo) + 2000000;
+                        vecesRestar++;
+                        Pockets.updateOne({_id:pocket1._id},pocket1).then((rea)=>{
+                          console.log('disponible++')
+
+                          Pockets.find({duenio:req.userData.userId}).then((pocketsResult)=>{
+                            if(pocketsResult){
+
+                              for(let i =0; i< pocketsResult.length; i++){
+                                if(pocketsResult[i].name=='NÓMINA'){
+
+                                  let h =0;
+                                  while(h<vecesRestar){
+
+                                    let pocket1 = pocketsResult[i];
+                                    pocket1.saldo = Number(pocket1.saldo) - 2000000;
+                                    h++;
+                                    Pockets.updateOne({_id:pocket1._id},pocket1).then((rea)=>{
+                                        console.log('nomina--')
+                                      })
+                                    }
+
+                                }
+                              }
+                            }
+
+                          })
+
+                        })
+                      }
+                    }
+
+                  }
+                })
+
+              }
+              }
+            }).then((result)=>{
+              res.status(200).json({message:'Actualizacion ejecutada.'})
+            })
+
+
+        }
 
 
         module.exports=PocketsController;
