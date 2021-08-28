@@ -194,11 +194,14 @@ makeOperation(id1:string,valor:number,id2?:string){
 
   this.http.put(this.URL+'/pockets/makeOperation',{id1:id1,valor:valor,id2:id2!}).subscribe((result)=>{
     console.log(result)
-    this.getPocketsValues()
 
-    this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
-    this.router.navigate(["managment"]));
-  })
+
+      this.getPocketsValues()
+      this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
+      this.router.navigate(["managment"]));
+
+  },error=>{alert("El valor a retirar sobrepasa los fondos disponibles.")
+})
 
 }
 
@@ -246,15 +249,15 @@ viaticos(id:string){
   this.http.put(this.URL+"/pockets/viaticos",{id:id}).subscribe((result)=>{
     alert('Pago efectuado.')
 
-  })
+  },error=>{alert('el valor a pagar es superior a los fondos en viáticos.')
+})
 
 }
 
-pagoUsers(){
-  this.http.put(this.URL+"/pockets/pagoUsers",{rol:'user'}).subscribe((result)=>{
-    alert('Pago efectuado.')
-
+  pagoUsers(){
+    this.http.put(this.URL+"/pockets/pagoUsers",{rol:'user'}).subscribe((result)=>{
+     alert('Pago efectuado.')
+    },error=>{alert('el valor a pagar es superior a los fondos en nomina.')
   })
-
 }
 }
