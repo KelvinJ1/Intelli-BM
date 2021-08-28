@@ -29,7 +29,7 @@ userUpdated = new Subject<User>();
       this.token = "";
   }
 
-  
+
 
 getToken(){
   return this.token;
@@ -74,7 +74,8 @@ signIn(email:string, password:string){
 addUser(rol: string, name:string, password:string,
   phone:string, email:string, accNumber: number, address: string, ){
 this.http.post<any>(this.URL+"/register",{rol,name, password, phone,email, accNumber,address,}).subscribe((response)=>{
-console.log("guardado exitosamente")
+  this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
+  this.router.navigate(["payroll"]));
 
 })
 
@@ -191,7 +192,7 @@ deleteUser(id:string){
 }
 makeOperation(id1:string,valor:number,id2?:string){
 
-  this.http.put(this.URL+'/pockets/makeOperation',{id1:id1,valor:valor,id2:id2}).subscribe((result)=>{
+  this.http.put(this.URL+'/pockets/makeOperation',{id1:id1,valor:valor,id2:id2!}).subscribe((result)=>{
     console.log(result)
     this.getPocketsValues()
 

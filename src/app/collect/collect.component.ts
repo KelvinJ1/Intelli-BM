@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -9,22 +11,27 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CollectComponent implements OnInit {
 
   userRol='';
+  dis=false;
+  via= false;
 @Input() dataEntrante:any;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.userRol=localStorage.getItem('rol')!;
    }
 
   ngOnInit(): void {
     this.userRol=localStorage.getItem('rol')!;
   }
+  makeOperation(form: NgForm,pocketId:string){
+    this.authService.makeOperation(pocketId,form.value.valor)
 
-  isAdmin(){
-    if(this.userRol=='user'){
-      return false
-    }else{
-      return true
-    }
   }
+  showVia(){
+    this.via = !this.via;
+  }
+  showDis(){
+    this.dis = !this.dis;
+  }
+
 
 }

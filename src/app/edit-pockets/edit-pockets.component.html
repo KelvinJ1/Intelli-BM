@@ -12,52 +12,52 @@
 </div>
 
 <div class="rounded-lg flex flex-col  gap-6  w-72 h-3/5 order-2 justify-center  ">
+  <!-- yellow -->
+  <div class="transform hover:scale-125 transition duration-300 bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400  rounded-lg gap-2 shadow-2xl flex flex-col mx-auto my-0   box-border w-72 h-72 order-1 justify-center self-center items-center ">
+    <!-- val viaticos -->
+    <div class="p-0 rounded-lg  flex mx-auto   w-9/12 h-12 order-1 justify-center self-start mt-10 ">
+      <p class="flex  justify-self-center self-center m-0 p-0 text-2xl	 text-white font-bold">{{valVia}}</p>
+    </div>
+    <!-- label viaticos -->
+    <div class="opacity-80  rounded-lg  flex m-auto mt-2 w-60 h-10 order-2 justify-center items-center">
+      <p class=" justify-self-center self-center flex  p-0 text-md text-white font-bold">VIÁTICOS</p>
+    </div>
+
+
     <form (submit)='makeOperation(pocketValue,pockets[1].id)' #pocketValue='ngForm'>
-        <!-- yellow -->
-        <div class="transform hover:scale-125 transition duration-300 bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400  rounded-lg gap-2 shadow-2xl flex flex-col mx-auto my-0   box-border w-72 h-72 order-1 justify-center self-center items-center ">
-        <!-- val viaticos -->
-        <div class="p-0 rounded-lg  flex mx-auto   w-9/12 h-12 order-1 justify-center self-start mt-10 ">
-            <p class="flex  justify-self-center self-center m-0 p-0 text-2xl	 text-white font-bold">{{valVia}}</p>
-        </div>
-        <!-- label viaticos -->
-        <div class="opacity-80  rounded-lg  flex m-auto mt-2 w-60 h-10 order-2 justify-center items-center">
-            <p class=" justify-self-center self-center flex  p-0 text-md text-white font-bold">VIÁTICOS</p>
-        </div>
-
-        
-            <div class="opacity-80  rounded-lg  flex m-auto mt-2 w-auto h-14 order-3 justify-center items-center">              
-                    <input class="opacity-80  rounded-lg justify-self-center self-center flex p-0 text-md  " type="number" name="" id="">
-                    <input class="opacity-80  box-border flex rounded-lg justify-self-center self-center m-2  p-1 text-sm text-md text-white font-bold bg-gray-800" type="submit" value="Add">
-            </div>       
-
-        </div>
+      <div class="opacity-80  rounded-lg  flex m-auto mt-2 w-auto h-14 order-3 justify-center items-center">
+        <input class="opacity-80  rounded-lg justify-self-center self-center flex p-0 text-md  " type="number" name="valor" ngModel #valor='ngModel' id="">
+        <input class="opacity-80  box-border flex rounded-lg justify-self-center self-center m-2  p-1 text-sm text-md text-white font-bold bg-gray-800" type="submit" value="Add">
+      </div>
     </form>
-<form (submit)='makeOperation(pocket2Value,pockets[2].id)' #pocket2Value='ngForm'>
+  </div>
     <!-- pink -->
     <div class="transform hover:scale-125 transition duration-300 bg-gradient-to-r from-pink-300 via-pink-400 to-pink-500 rounded-lg shadow-2xl gap-2 flex flex-col mx-auto my-0 box-border h-72 w-72   order-2 justify-center self-center items-end">
-        <!-- val nomina -->
-        <div class=" p-0 rounded-lg  flex mx-auto   w-9/12 h-12 order-1 justify-center self-start mt-10 ">
-            <p class="flex  justify-self-center self-center m-0 p-0 text-2xl	 text-white font-bold">{{valNom}}</p>
-        </div>
-        <!-- label nomina -->
-        <div class="opacity-80  rounded-lg  flex m-auto mt-2 w-60 h-10 order-2 justify-center items-center">
-            <p class=" justify-self-center self-center flex  p-0 text-md text-white font-bold">NÓMINA</p>
-        </div>
+      <!-- val nomina -->
+      <div class=" p-0 rounded-lg  flex mx-auto   w-9/12 h-12 order-1 justify-center self-start mt-10 ">
+        <p class="flex  justify-self-center self-center m-0 p-0 text-2xl	 text-white font-bold">{{valNom}}</p>
+      </div>
+      <!-- label nomina -->
+      <div class="opacity-80  rounded-lg  flex m-auto mt-2 w-60 h-10 order-2 justify-center items-center">
+        <p class=" justify-self-center self-center flex  p-0 text-md text-white font-bold">NÓMINA</p>
+      </div>
 
-        
-            <div class="opacity-80  rounded-lg  flex m-auto mt-2 w-auto h-14 order-3 justify-center items-center ">         
-                    <input class="opacity-80  rounded-lg justify-self-center self-center flex p-0 text-md  " type="number" name="" id="">
+
+      <form (submit)='makeOperation(pocket2Value,pockets[2].id)' #pocket2Value='ngForm'>
+            <div class="opacity-80  rounded-lg  flex m-auto mt-2 w-auto h-14 order-3 justify-center items-center ">
+                    <input class="opacity-80  rounded-lg justify-self-center self-center flex p-0 text-md  " type="number" name="valor" ngModel #valor='ngModel' id="">
                     <input class="opacity-80  box-border flex rounded-lg justify-self-center self-center m-2  p-1 text-sm text-md text-white font-bold bg-gray-800" type="submit" value="Add">
-            </div>    
+            </div>
+      </form>
     </div>
-</form>
 </div>
 </div>
 
 
 <div *ngIf="!isAdmin()" class="w-4/5  m-auto mt-20 flex flex-row justify-center  p-6 items-center">
- 
+
     <app-collect [dataEntrante]="this.pockets">  </app-collect>
+
 
 </div>
 

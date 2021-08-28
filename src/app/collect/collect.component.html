@@ -21,29 +21,33 @@
 
 <div class="flex flex-row gap-12 ">
     <!-- RETIRAR DISPONIBLE -->
-    <div class="opacity-80  rounded-lg  flex flex-col m-auto mt-20 w-auto h-14 order-3 justify-center items-center ">         
-        <div class="flex w-auto ">
-            <input class="opacity-80 w-60 rounded-lg justify-self-center self-center flex p-0 text-md  " type="number" name="" id="">
+    <div class="opacity-80  rounded-lg  flex flex-col m-auto mt-20 w-auto h-14 order-3 justify-center items-center ">
+        <div *ngIf='dis' class="flex w-auto ">
+          <form (submit)='makeOperation(valueDis,dataEntrante[0].id)' #valueDis='ngForm'>
+            <input class="opacity-80 w-60 rounded-lg justify-self-center self-center flex p-0 text-md  " type="number" name="valor" ngModel #valor='ngModel' id="">
             <input class="opacity-80 w-20 box-border flex rounded-lg justify-center  m-2  p-1 text-sm text-md text-white font-bold bg-gray-500" type="submit" value="Aceptar">
-        </div>  
+          </form>
+        </div>
 
         <div class="flex w-auto mt-10">
-            <input type="button" value="RETIRAR DISPONIBLE" class="flex transform hover:scale-125 transition duration-300 rounded-lg  justify-center bg-gray-800 w-60 h-16 m-auto font-bold text-white">
+            <input (click)='showDis()' type="button" value="RETIRAR DISPONIBLE" class="flex transform hover:scale-125 transition duration-300 rounded-lg  justify-center bg-gray-800 w-60 h-16 m-auto font-bold text-white">
         </div>
-    </div>    
+    </div>
 
 
     <!-- RETIRAR VIATICOS -->
-    <div class="opacity-80  rounded-lg  flex flex-col m-auto mt-20 w-auto h-14 order-3 justify-center items-center ">         
-        <div class="flex w-auto ">
-            <input class="opacity-80 w-60 rounded-lg justify-self-center self-center flex p-0 text-md  " type="number" name="" id="">
+    <div class="opacity-80  rounded-lg  flex flex-col m-auto mt-20 w-auto h-14 order-3 justify-center items-center ">
+        <div *ngIf='via' class="flex w-auto ">
+          <form (submit)='makeOperation(valueVia,dataEntrante[1].id)' #valueVia='ngForm'>
+            <input class="opacity-80 w-60 rounded-lg justify-self-center self-center flex p-0 text-md  " type="number" name="valor" ngModel #valor='ngModel' id="">
             <input class="opacity-80 w-20 box-border flex rounded-lg justify-center  m-2  p-1 text-sm text-md text-white font-bold bg-gray-500" type="submit" value="Aceptar">
-        </div>  
+          </form>
+        </div>
 
         <div class="flex w-auto mt-10">
-            <input type="button" value="RETIRAR VIÁTICOS" class="flex transform hover:scale-125 transition duration-300 rounded-lg  justify-center bg-gray-800 w-60 h-16 m-auto font-bold text-white">
+            <input (click)='showVia()' type="button" value="RETIRAR VIÁTICOS" class="flex transform hover:scale-125 transition duration-300 rounded-lg  justify-center bg-gray-800 w-60 h-16 m-auto font-bold text-white">
         </div>
-    </div> 
+    </div>
 
 
 </div>
