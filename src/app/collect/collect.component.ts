@@ -28,9 +28,16 @@ export class CollectComponent implements OnInit {
   }
   showVia(){
     this.via = !this.via;
+    if(this.dis==true){
+      this.dis=false;
+    }
   }
   showDis(){
     this.dis = !this.dis;
+    if(this.via==true){
+      this.via=false;
+    }
+
   }
 
 

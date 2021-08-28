@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { Content } = require("@angular/compiler/src/render3/r3_ast");
 const { Type } = require("@angular/compiler/src/core");
+const Pockets = require('../models/pockets')
 
 
 
@@ -26,14 +27,67 @@ const UsersController = {}
                         accNumber:req.body.accNumber,
                         address:req.body.address,
                         cargo: req.body.cargo});
-                    newUser.save()
-                    .then(result => {res.status(201).json({message:"User created succesfully", result:result});
+                    newUser.save().then((result)=>{
+
+                      let user =result;
+
+                      if(user.rol=='user'){
+
+                        let pocketForAdd = new Pockets({
+                          name: 'DISPONIBLE',
+                          saldo: '0',
+                          duenio: user._id
+
+                        });
+                        pocketForAdd.save().then((createdPocket)=>{
+                          console.log('created')
+                        });
+
+                        pocketForAdd = new Pockets({
+                          name: 'VIÁTICOS ASIGNADOS',
+                          saldo: '0',
+                          duenio: user._id
+
+                        });
+                        pocketForAdd.save().then((createdPocket)=>{
+                          console.log('created')
+                        });
+
+                      }else if(user.rol=='admin'){
+
+                        let pocketForAdd = new Pockets({
+                          name: 'GENERAL',
+                          saldo: '0',
+                          duenio: user._id
+
+                        });
+                        pocketForAdd.save().then((createdPocket)=>{
+                          console.log('created')
+                        });
+
+                        pocketForAdd = new Pockets({
+                          name: 'VIÁTICOS',
+                          saldo: '0',
+                          duenio: user._id
+
+                        });
+                        pocketForAdd.save().then((createdPocket)=>{
+                          console.log('created')
+                        });
+
+                        pocketForAdd = new Pockets({
+                          name: 'NÓMINA',
+                          saldo: '0',
+                          duenio: user._id
+
+                        });
+                        pocketForAdd.save().then((createdPocket)=>{
+                          console.log('created')
+                        });
+
+                      }
+                      res.status(201).json({message:"User created succesfully"})
                     })
-                    .catch(err=>{res.status(500).json({error:err});
-                })
-
-
-
                 }) };
 
 

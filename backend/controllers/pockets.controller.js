@@ -90,21 +90,6 @@ const PocketsController = {}
         }
 
         PocketsController.viaticos= (req,res)=>{
-          // Pockets.find({duenio:req.body.id}).then((pocketsResult)=>{
-          //   if(pocketsResult){
-
-          //     for(let i =0; i< pocketsResult.length; i++){
-          //       if(pocketsResult[i].name=='VIÁTICOS ASIGNADOS'){
-          //         let pocket1 = pocketsResult[i];
-          //         pocket1.saldo = Number(pocket1.saldo) + 500000;
-          //         Pockets.updateOne({_id:pocket1._id},pocket1).then((rea)=>{
-          //           res.status(200).json({message:'Actualizacion ejecutada.'})
-          //         })
-          //       }
-          //     }
-          //   }
-          // })
-
           Pockets.find({duenio:req.userData.userId}).then((pocketsResult)=>{
             if(pocketsResult){
 
