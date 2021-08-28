@@ -15,7 +15,7 @@ router.post("/signin",UsersController.getUser);
 router.get("/getUsers",UsersController.getUsers);
 
 
-router.put("/:id",UsersController.editUser);
+router.put("/editUser",checkauth,UsersController.editUser);
 
 router.delete("/deleteUser",checkauth,UsersController.deleteUser);
 

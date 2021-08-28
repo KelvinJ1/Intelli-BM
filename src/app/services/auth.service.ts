@@ -13,9 +13,8 @@ import { error } from '@angular/compiler/src/util';
 })
 
 export class AuthService {
-
-users: User[]=[]
-private pockets: Pocket[]=[];
+pockets: Pocket[]=[];
+users: User[]=[];
 private token: string;
 private URL = "http://localhost:3000/api";
 private authStatusListener = new Subject<boolean>();
@@ -190,11 +189,9 @@ getUsersUpdateListener(){
     })
   }
 
-
-
- 
-
-
-
-
+  makeOperation(id1:string,valor:string,id2?:string){
+    this.http.put(this.URL+'/pockets/makeOperation',{id1:id1,valor:Number(valor),id2:id2}).subscribe((result)=>{
+      const updatedPocket = [...this.pockets];
+    })
+  }
 }
