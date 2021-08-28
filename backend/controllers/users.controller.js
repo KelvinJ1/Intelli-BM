@@ -25,7 +25,7 @@ const UsersController = {}
                         email:req.body.email,
                         accNumber:req.body.accNumber,
                         address:req.body.address,
-                       });
+                        cargo: req.body.cargo});
                     newUser.save()
                     .then(result => {res.status(201).json({message:"User created succesfully", result:result});
                     })
@@ -52,8 +52,8 @@ const UsersController = {}
                         return res.status(401).json({message: "Unauthorized, password does not match"});
                     }
                     //checks in the given email, id, secKey(envVAR),expiration time
-                const token=jwt.sign({email:userGet.email, userId: userGet._id}, key, {expiresIn:"1h"});
-                    res.status(200).json({token: token, expiresIn: 3600});
+                const token=jwt.sign({email:userGet.email, userId: userGet._id, rol: userGet.rol}, key, {expiresIn:"1h"});
+                    res.status(200).json({token: token, expiresIn: 3600,rol: userGet.rol});
                     })
                     .catch((err =>{
                         return res.status(401).json({message:"Authentication failed, token error"});
@@ -100,12 +100,23 @@ const UsersController = {}
                                 final.push(usersResult[i])
                             }
                         }
+
                         res.status(200).json(final)
                     }else{
                         res.status(400).json({message:'no encontrado'})
                     }
                     })
                     }
+
+                UsersController.getUserEdit = (req,res) =>{
+                    Users.findById(req.body.id).then((userResult)=>{
+                      if(userResult){
+                        res.status(200).json(userResult)
+                      }else{
+                        res.status(400).json({message:'User no encontrado con el id enviado'});
+                      }
+                    })
+                  }
 
 
 module.exports= UsersController;

@@ -13,16 +13,16 @@ import { error } from '@angular/compiler/src/util';
 })
 
 export class AuthService {
-pockets: Pocket[]=[];
-users: User[]=[];
+  pockets: Pocket[]=[];
+  users: User[]=[];
+  user!: User;
 private token: string;
 private URL = "http://localhost:3000/api";
 private authStatusListener = new Subject<boolean>();
 private isAuthenticated = false;
-alerta=false;
 pocketUpdated = new Subject<Pocket[]>();
 usersUpdated = new Subject<User[]>();
-
+userUpdated = new Subject<User>();
 
 
   constructor(private http:HttpClient,  private router: Router) {
@@ -48,15 +48,11 @@ return this.isAuthenticated;
 
 }
 
-getalertaErro(){
 
-  return this.alerta=true;
-  
-  }
-  
+
 
 signIn(email:string, password:string){
-  this.http.post<{token:string, expiresIn:number}>(this.URL + "/signin", {email,password})
+  this.http.post<{token:string, expiresIn:number,rol:string}>(this.URL + "/signin", {email,password})
     .subscribe((response)=>{
     this.token = response.token;
     if (this.token) {
@@ -67,8 +63,7 @@ signIn(email:string, password:string){
       const now = new Date();
       const expirationDate = new Date(now.getTime()+expirationInDuration*1000);
       console.log(expirationDate);
-     
-      this.saveAuthData(this.token, expirationDate);
+      this.saveAuthData(this.token, expirationDate, response.rol);
       this.router.navigate(["/monitoring"])
     }
     },error=>{alert("Contraseña o usuario incorrecto")
@@ -93,23 +88,26 @@ logout(){
   this.router.navigate(["/"])
 }
 
-private saveAuthData (token: string, expirationDate: Date){
+private saveAuthData (token: string, expirationDate: Date, rol:string){
   localStorage.setItem("token", token);
   localStorage.setItem("expiration", expirationDate.toISOString());
+  localStorage.setItem("rol", rol );
 }
 
 private clearAuthData (){
   localStorage.removeItem("token");
   localStorage.removeItem("expiration");
+  localStorage.removeItem("rol");
 }
 
 private getAuthData(){
 const token = localStorage.getItem("token");
 const expirationDate = new Date(localStorage.getItem("expiration")!);
-if (!token ||!expirationDate) {
+const rolStorage = localStorage.getItem('rol')
+if (!token ||!expirationDate||!rolStorage) {
   return;
 }
-return{token: token, expirationDate: expirationDate};
+return{token: token, expirationDate: expirationDate,rol:rolStorage};
 }
 
 private setAuthTimer(duration:number){
@@ -172,6 +170,7 @@ getUsersValues(){
     })
   })).subscribe((dataTrasformed)=>{
     this.users = dataTrasformed;
+    //actualizar info a los suscriptores.
     this.usersUpdated.next([...this.users]);
   })
 }
@@ -179,19 +178,82 @@ getUsersUpdateListener(){
   return this.usersUpdated.asObservable();
 }
 
-  deleteUser(id:string){
-    this.http.delete(this.URL+'/deleteUser',{body:{id:id}}).subscribe((result)=>{
-      const updatedUser = this.users.filter(user=>user.id!==id);
-      this.users = updatedUser;
-      console.log(this.users)
-      this.usersUpdated.next([...this.users])
-      this.router.navigate(['/payroll'])
-    })
-  }
+deleteUser(id:string){
+  this.http.delete(this.URL+'/deleteUser',{body:{id:id}}).subscribe((result)=>{
+    const updatedUser = this.users.filter(user=>user.id!==id);
+    this.users = updatedUser;
+    console.log(this.users)
+    this.usersUpdated.next([...this.users])
+    //evitar el salto a monitoring
+    this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
+    this.router.navigate(["payroll"]));
+  })
+}
+makeOperation(id1:string,valor:number,id2?:string){
 
-  makeOperation(id1:string,valor:string,id2?:string){
-    this.http.put(this.URL+'/pockets/makeOperation',{id1:id1,valor:Number(valor),id2:id2}).subscribe((result)=>{
-      const updatedPocket = [...this.pockets];
-    })
-  }
+  this.http.put(this.URL+'/pockets/makeOperation',{id1:id1,valor:valor,id2:id2}).subscribe((result)=>{
+    console.log(result)
+    this.getPocketsValues()
+
+    this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
+    this.router.navigate(["managment"]));
+  })
+
+}
+
+getUserEdit(id:string){
+  this.http.post<any>(this.URL +'/getUserEdit',{id:id}).subscribe((result)=>{
+    const userEd={
+      id:result._id,
+      rol: result.rol,
+      name:result.name,
+      password:result.password,
+      phone:result.phone,
+      email:result.email,
+      accNumber: result.accNumber,
+      address: result.address}
+    this.user =userEd
+    this.userUpdated.next(this.user)
+  })
+
+
+}
+getUserUpdateListener(){
+  return this.userUpdated.asObservable();
+}
+
+editUser(id: string, rol: string, name:string, password:string, phone:string, email:string, accNumber: number, address: string){
+  this.http.put<any>(this.URL+'/editUser',{id,rol,name,password,phone,email,accNumber,address}).subscribe((result)=>{
+    const userEd={
+      id:result._id,
+      rol: result.rol,
+      name:result.name,
+      password:result.password,
+      phone:result.phone,
+      email:result.email,
+      accNumber: result.accNumber,
+      address: result.address}
+    this.user=userEd;
+    this.userUpdated.next(this.user)
+    this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
+    this.router.navigate(["payroll"]));
+
+  })
+}
+
+viaticos(id:string){
+  this.http.put(this.URL+"/pockets/viaticos",{id:id}).subscribe((result)=>{
+    alert('Pago efectuado.')
+
+  })
+
+}
+
+pagoUsers(){
+  this.http.put(this.URL+"/pockets/pagoUsers",{rol:'user'}).subscribe((result)=>{
+    alert('Pago efectuado.')
+
+  })
+
+}
 }

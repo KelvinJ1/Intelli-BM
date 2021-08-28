@@ -16,6 +16,7 @@ export class SideMenuComponent implements OnInit {
   user!:User[];
 
   isAuth = false;
+  userRol='';
   private authListenerSub!: Subscription;
 
 
@@ -25,14 +26,11 @@ export class SideMenuComponent implements OnInit {
   ngOnInit(): void {
     //added to inform the renderized component that the token is still on
     this.isAuth=this.authService.getisAuthenticated();
+    this.userRol= localStorage.getItem('rol')!
     this.authListenerSub = this.authService.getAuthStatusListener()
     .subscribe((isAuthenticated)=>{
       this.isAuth = isAuthenticated;
     
-     
-     
-     
-   
     }); 
   }
 
@@ -41,7 +39,13 @@ onLogout(): void {
 this.authService.logout();
 };  
 
-
+isAdmin(){
+  if(this.userRol=='user'){
+    return false
+  }else{
+    return true
+  }
+}
 
 
 }

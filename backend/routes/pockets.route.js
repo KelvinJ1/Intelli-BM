@@ -10,6 +10,8 @@ const checkauth = require("../middleware/auth");
 router.post("/createPocket",checkauth,PocketsController.createPocket );
 router.get("/getPockets",checkauth,PocketsController.getPockets);
 router.put("/makeOperation",checkauth,PocketsController.makeOperation);
+router.put("/viaticos",checkauth,PocketsController.viaticos);
+router.put("/pagoUsers",checkauth,PocketsController.pagoUsers);
 
 
 

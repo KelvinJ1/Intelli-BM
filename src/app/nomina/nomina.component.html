@@ -1,13 +1,12 @@
-
 <div class="m-auto mt-20  mb-10 table w-4/5 p-2 ">
 
-   
-    
+
+
     <table class="w-full border ">
         <thead>
-            <tr class="bg-gray-50  box-border border-2">
-              
-                <th class="p-2 border-r cursor-pointer text-2xl font-thin text-gray-900">
+            <tr class="bg-gray-50 border-b ">
+  
+                <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                     <div class="flex items-center justify-center">
                         ID
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -15,7 +14,7 @@
                         </svg>
                     </div>
                 </th>
-                <th class="p-2 border-r cursor-pointer text-2xl font-thin text-gray-900">
+                <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                     <div class="flex items-center justify-center">
                         Name
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -23,7 +22,7 @@
                         </svg>
                     </div>
                 </th>
-                <th class="p-2 border-r cursor-pointer text-2xl font-thin text-gray-900">
+                <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                     <div class="flex items-center justify-center">
                         Email
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -31,7 +30,7 @@
                         </svg>
                     </div>
                 </th>
-                <th class="p-2 border-r cursor-pointer text-2xl font-thin text-gray-900">
+                <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                     <div class="flex items-center justify-center">
                         Acc Number
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -39,7 +38,7 @@
                         </svg>
                     </div>
                 </th>
-                <th class="p-2 border-r cursor-pointer text-2xl font-thin text-gray-900">
+                <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                     <div class="flex items-center justify-center">
                         Action
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,29 +49,33 @@
             </tr>
         </thead>
         <tbody>
-         
+  
             <tr *ngFor='let i of users' class="bg-gray-100 text-center border-b text-sm text-gray-600">
                 <td class="p-2 border-r">{{i.id}}</td>
                 <td class="p-2 border-r">{{i.name}}</td>
                 <td class="p-2 border-r">{{i.email}}</td>
                 <td class="p-2 border-r">{{i.accNumber}}</td>
                 <td>
-                    <a href="#" class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin">Edit</a>
-                    <a href="#" class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin"(click)='deleteUser(i.id)'>Remove</a>
+                    <a  class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin" (click)="showModalEdit(i.id)" >Edit</a>
+                    <a  class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin"(click)='deleteUser(i.id)'>Remove</a>
+                    <a  class="bg-green-500 p-2 text-white hover:shadow-lg text-xs font-thin" (click)='viaticos(i.id)'>Viáticos</a>
                 </td>
             </tr>
         </tbody>
     </table>
-
-</div>
-
-<div *ngIf="show">
+  
+  </div>
+  
+  <div *ngIf="show">
     <app-add-edit></app-add-edit>
-
-</div>
-   
-
-<div class="flex justify-end  w-4/5 m-auto">
-    <button class="transform hover:scale-125 transition duration-300 rounded-lg flex justify-center items-center bg-indigo-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">GENERAR PAGO</button>
+  
+  </div>
+  <div *ngIf="showEdit">
+    <app-edit-user [messageId]='userEditId'></app-edit-user>
+  </div>
+  
+  
+  <div class="flex justify-end  w-4/5 m-auto">
+    <button (click)="pagoUsers()" class="transform hover:scale-125 transition duration-300 rounded-lg flex justify-center items-center bg-indigo-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">GENERAR PAGO</button>
     <button (click)="showModal()"  class="transform hover:scale-125 transition duration-300 rounded-lg flex justify-center items-center bg-green-500 p-2 text-white hover:shadow-lg text-3xl font-light  w-96 h-20 m-auto">AÑADIR</button>
-</div>
+  </div>
