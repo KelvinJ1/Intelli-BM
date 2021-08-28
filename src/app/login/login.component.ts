@@ -21,14 +21,14 @@ alerta=false
     // private router: Router,
 
     ) {this.user={id:'',rol:'',name:'',email:"", password:"",phone:'',accNumber:0,address:''} 
-    this.alerta=this.authService.alerta
-  
+ 
+ 
   }
+
 
   ngOnInit(): void {
 
   }
-
 
 
   
@@ -39,14 +39,7 @@ if (form.invalid) {
 
 }
 
-try {this.authService.signIn(form.value.email, form.value.password);
-  
-} catch (error) {
-  this.alerta=true
-  console.log(this.alerta)
-  
-}
-
+this.authService.signIn(form.value.email, form.value.password);
 ;
 }
 

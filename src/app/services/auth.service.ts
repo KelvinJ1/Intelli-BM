@@ -49,6 +49,11 @@ return this.isAuthenticated;
 
 }
 
+getalertaErro(){
+
+  return this.alerta=true;
+  
+  }
   
 
 signIn(email:string, password:string){
