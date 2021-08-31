@@ -56,9 +56,9 @@
                 <td class="p-2 border-r">{{i.email}}</td>
                 <td class="p-2 border-r">{{i.accNumber}}</td>
                 <td>
-                    <a  class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin" (click)="showModalEdit(i.id)" >Edit</a>
-                    <a  class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin"(click)='deleteUser(i.id)'>Remove</a>
-                    <a  class="bg-green-500 p-2 text-white hover:shadow-lg text-xs font-thin" (click)='viaticos(i.id)'>Viáticos</a>
+                    <button  class="bg-blue-500 p-2 text-white hover:shadow-lg text-xs font-thin" (click)="showModalEdit(i.id)" >Edit</button>
+                    <button  class="bg-red-500 p-2 text-white hover:shadow-lg text-xs font-thin"(click)='deleteUser(i.id)'>Remove</button>
+                    <button  class="bg-green-500 p-2 text-white hover:shadow-lg text-xs font-thin" (click)='viaticos(i.id)'>Viáticos</button>
                 </td>
             </tr>
         </tbody>

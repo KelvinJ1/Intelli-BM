@@ -63,7 +63,7 @@
 
 <!-- CHARTS -->
 
-<div *ngIf='isAdmin()' class="flex flex-wrap justify-center ">
+<div  class="flex flex-wrap justify-center ">
     <!-- sizes w-6/12 h-60 -->
         <div class="transform hover:scale-125 transition duration-300 shadow-2xl rounded-2xl flex  order-1 justify-center items-center  w-auto h-auto m-10">
         <ngx-charts-bar-vertical
@@ -99,6 +99,8 @@
     <div *ngIf='isAdmin()' (click)="showModal()" class="flex justify-center  w-auto h-24 m-8 ">
         <input type="button" value="GENERAR REPORTE" class="flex transform hover:scale-125 transition duration-300 rounded-lg bg-gray-800 w-60 h-20 self-center justify-center font-bold text-white">
       </div>
-      <div *ngIf='!isAdmin()' class="flex justify-center  w-auto h-24 m-8 ">
+      <!-- <div *ngIf='!isAdmin()'  class="flex justify-center  w-auto h-24 m-8 ">
         <input type="button" value="HISTORIAL" class="flex transform hover:scale-125 transition duration-300 rounded-lg bg-gray-800 w-60 h-20 self-center justify-center font-bold text-white">
       </div>
+
+     -->

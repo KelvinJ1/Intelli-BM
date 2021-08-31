@@ -19,6 +19,7 @@ export class MonitoringComponent implements OnInit {
 
 
   show=false;
+ 
   private pocketSub: Subscription;
   pockets: Pocket[]=[];
   userRol='';
@@ -90,6 +91,7 @@ export class MonitoringComponent implements OnInit {
       return this.show=!this.show;
       
       }
+   
 
       
 
