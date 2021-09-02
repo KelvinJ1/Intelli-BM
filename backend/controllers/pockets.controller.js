@@ -1,9 +1,5 @@
 const Pockets = require('../models/pockets');
 const Users = require('../models/users');
-const jwt = require('jsonwebtoken');
-const pockets = require('../models/pockets');
-
-const key = "probando__::5896"
 
 const PocketsController = {}
         // crea un pocket
