@@ -5,7 +5,6 @@ import {catchError, map} from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { Pocket } from '../models/pocket.model';
 import { User } from '../models/user.model';
-import { error } from '@angular/compiler/src/util';
 import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 

@@ -1,5 +1,3 @@
-const { Content } = require("@angular/compiler/src/render3/r3_ast");
-const { application } = require("express");
 const express = require("express");
 const router = express.Router();
 const UsersController = require("../controllers/users.controller")

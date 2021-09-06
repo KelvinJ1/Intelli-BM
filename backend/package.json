@@ -1,6 +1,14 @@
 {
   "name": "intelli-bm",
   "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "ejecutar": "nodemon backend/server.js"
+  },
   "private": true,
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -9,6 +17,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.3",
     "mongoose-unique-validator": "^2.0.3",
-    "tslib": "^2.2.0"
+    "nodemon": "^2.0.12",
+    "npm": "^7.20.3"
   }
+ 
 }

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: "http://http://intellibm-env.eba-gjpnxspv.us-east-2.elasticbeanstalk.com/",
+  apiURL: "http://intelligentbudgetmanager-env.eba-ipwwxz3v.us-east-2.elasticbeanstalk.com/",
 };
