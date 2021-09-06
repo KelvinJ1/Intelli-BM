@@ -3,7 +3,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { NgForm } from '@angular/forms';
-
+import { Swal } from "sweetalert2/dist/sweetalert2";
 
 @Component({
   selector: 'app-login',
@@ -29,9 +29,6 @@ alerta=false
   ngOnInit(): void {
 
   }
-
-
-  
 
   signIn(form: NgForm) {
 if (form.invalid) {

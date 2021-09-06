@@ -139,8 +139,32 @@ const UsersController = {}
                   Users.deleteOne({_id:req.body.id}).then((result)=>{
                     res.status(200).json({message:'User eliminado'})
                   })
+                    Pockets.find({duenio: req.body.id}).then((pocketsUser)=>{
+
+                      listPockets = pocketsUser;
+                      for(let i = 0; i < listPockets.length; i++){
+
+                        let pocket1 = listPockets[i];
+
+                        Pockets.deleteOne({_id: pocket1._id}).then((rae)=>{
+                          console.log('eliminado')
+                        })
+                      }
+
+                    })
+
+                    Users.deleteOne({_id:req.body.id}).then((result)=>{
+                      res.status(200).json({message:'User eliminado'})
+                    })
 
                 };
+
+
+
+
+
+
+                
 
 
                 //listar

@@ -7,6 +7,7 @@ import { Pocket } from '../models/pocket.model';
 import { User } from '../models/user.model';
 import { error } from '@angular/compiler/src/util';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 
 @Injectable({
@@ -68,7 +69,12 @@ if (this.token) {
   this.saveAuthData(this.token, expirationDate, response.rol);
   this.router.navigate(["/monitoring"])
 }
-},error=>{alert("Contraseña o usuario incorrecto")
+},error=>{Swal.fire({
+  icon: 'error',
+  title: 'Oops... Algo falló!',
+  text: 'Parece que el correo o la contraseña no coinciden.',
+  
+})
 }
 );
 }
@@ -76,8 +82,14 @@ if (this.token) {
 addUser(rol: string, name:string, password:string,
 phone:string, email:string, accNumber: number, address: string, ){
 this.http.post<any>(this.URL+"/register",{rol,name, password, phone,email, accNumber,address,}).subscribe((response)=>{
+  Swal.fire(
+    'Perfecto.',
+    '¡Usuario agregado exitosamente!',
+    'success'
+  )
 this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
 this.router.navigate(["payroll"]));
+
 
 })
 
@@ -192,19 +204,21 @@ this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
 this.router.navigate(["payroll"]));
 })
 }
-makeOperation(id1:string,valor:number,id2?:string){
 
+
+makeOperation(id1:string,valor:number,id2?:string){
 this.http.put(this.URL+'/pockets/makeOperation',{id1:id1,valor:valor,id2:id2!}).subscribe((result)=>{
 console.log(result)
-
-
   this.getPocketsValues()
   this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
   this.router.navigate(["managment"]));
-
-},error=>{alert("El valor a retirar sobrepasa los fondos disponibles.")
+},error=>{Swal.fire({
+  icon: 'error',
+  title: 'Inválido!',
+  text: 'El valor a retirar sobrepasa los fondos disponibles.',
+  
 })
-
+})
 }
 
 getUserEdit(id:string){
@@ -248,12 +262,19 @@ this.router.navigate(["payroll"]));
 }
 
 viaticos(id:string){
-this.http.put(this.URL+"/pockets/viaticos",{id:id}).subscribe((result)=>{
-alert('Pago efectuado.')
+this.http.put(this.URL+"/pockets/viaticos",{id:id}).subscribe((result)=>{ 
 
-},error=>{alert('el valor a pagar es superior a los fondos en viáticos.')
+  Swal.fire(
+  'Perfecto.',
+  '¡Asignación exitosa!',
+  'success'
+)
+},error=>{ Swal.fire(
+  'Oops...',
+  'Fondos insuficientes',
+  'error'
+)
 })
-
 }
 
 pagoUsers(){
@@ -262,4 +283,6 @@ this.http.put(this.URL+"/pockets/pagoUsers",{rol:'user'}).subscribe((result)=>{
 },error=>{alert('el valor a pagar es superior a los fondos en nomina.')
 })
 }
+
+
 }

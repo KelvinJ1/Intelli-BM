@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nomina',
@@ -32,15 +33,62 @@ export class NominaComponent implements OnInit {
       this.users=users
     })
   }
+
+
+
+
   deleteUser(id:string){
-    this.authService.deleteUser(id)
-    this.usersSub=this.authService.getUsersUpdateListener().subscribe((users:User[])=>{
-      this.users=users
+
+    Swal.fire({
+      title: '¿Seguro?',
+      text: "No podrás revertir esta acción.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, eliminar usuario',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+      
+        this.authService.deleteUser(id)
+        this.usersSub=this.authService.getUsersUpdateListener().subscribe((users:User[])=>{
+          this.users=users
+        })
+  
+        Swal.fire(
+          'Eliminado!',
+          'Usuario eliminado exitosamente.',
+          'success'
+        )
+      }
     })
+
+
+   
   }
 
   viaticos(id:string){
-    this.authService.viaticos(id);
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "No podrás revertir esta acción.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, asignar viáticos',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+
+      if (result.isConfirmed) {
+
+      this.authService.viaticos(id);
+       
+      }
+    })
+    
+ 
   }
 
   pagoUsers(){

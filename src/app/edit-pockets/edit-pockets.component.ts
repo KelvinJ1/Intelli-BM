@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Pocket } from '../models/pocket.model';
 import { AuthService } from '../services/auth.service';
 import { NgForm } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-pockets',
@@ -45,9 +46,15 @@ export class EditPocketsComponent implements OnInit {
     }
   }
 
+  
+    
+
+
   makeOperation(form: NgForm,pocketId:string){
     this.authService.makeOperation(this.pockets[0].id,form.value.valor,pocketId)
   }
+
+  
 
   isAdmin(){
     if(this.userRol=='user'){
