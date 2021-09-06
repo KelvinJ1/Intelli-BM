@@ -279,8 +279,16 @@ this.http.put(this.URL+"/pockets/viaticos",{id:id}).subscribe((result)=>{
 
 pagoUsers(){
 this.http.put(this.URL+"/pockets/pagoUsers",{rol:'user'}).subscribe((result)=>{
- alert('Pago efectuado.')
-},error=>{alert('el valor a pagar es superior a los fondos en nomina.')
+  Swal.fire(
+    'Transferencia exitosa!',
+    'Pago a nómina generado.',
+    'success'
+  )
+},error=>{Swal.fire(
+  'Oops...',
+  'Fondo de nómina insuficiente.',
+  'error'
+)
 })
 }
 

@@ -19,5 +19,8 @@ ___
 
 ## [SPRINT #5:](https://sharing.clickup.com/t/h/7hb7v4/Y2FXAOFBUHDGA1Q) :file_folder: :white_check_mark:
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 86a7b0c (errors and alerts final)
