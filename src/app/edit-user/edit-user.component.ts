@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
+import Swal from "sweetalert2";
 
 interface options{
   name: string,
@@ -45,9 +46,23 @@ export class EditUserComponent implements OnInit {
 
   }
 
-  updatedUser(form:NgForm){
+  invalid(){
 
-    this.authSevice.editUser(this.user.id,form.value.rol,form.value.name,form.value.password,form.value.phone,form.value.email,form.value.accNumber,form.value.address)
+    Swal.fire(
+      'Error',
+      'Formulario inválido.',
+      'error'
+    )
+  }
+
+  updatedUser(form:NgForm){
+    if (form.invalid) { 
+      return this.invalid()
+    
+    }
+
+    this.authSevice.editUser(this.user.id,form.value.rol,form.value.name,form.value.password,form.value.phone,
+      form.value.email,form.value.accNumber,form.value.address)
   }
 
 

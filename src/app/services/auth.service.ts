@@ -255,6 +255,11 @@ const userEd={
   address: result.address}
 this.user=userEd;
 this.userUpdated.next(this.user)
+Swal.fire(
+  'Perfecto.',
+  '¡Usuario editado exitosamente!',
+  'success'
+)
 this.router.navigateByUrl('/monitoring', {skipLocationChange: true}).then(()=>
 this.router.navigate(["payroll"]));
 
