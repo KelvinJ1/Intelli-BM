@@ -136,9 +136,7 @@ const UsersController = {}
                 //delete (listar usuarios)
                 UsersController.deleteUser=(req,res)=>{
 
-                  Users.deleteOne({_id:req.body.id}).then((result)=>{
-                    res.status(200).json({message:'User eliminado'})
-                  })
+              
                     Pockets.find({duenio: req.body.id}).then((pocketsUser)=>{
 
                       listPockets = pocketsUser;

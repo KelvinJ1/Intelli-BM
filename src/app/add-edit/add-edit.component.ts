@@ -21,14 +21,20 @@ user:User;
   ngOnInit(): void {
   }
 
+
+  invalid(){
+
+    Swal.fire(
+      'Error',
+      'Formulario inválido.',
+      'error'
+    )
+  }
+
   addUser(form: NgForm) {
-    if (form.invalid) {
-      return console.log("formulario inválido");
-      Swal.fire(
-        'Error',
-        'Formulario inválido.',
-        'error'
-      )
+    if (form.invalid) { 
+      return this.invalid()
+    
     }
     this.authService.addUser( form.value.rol, form.value.name, form.value.password, form.value.phone, form.value.email,
       form.value.accNumber, form.value.address);
