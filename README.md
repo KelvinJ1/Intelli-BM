@@ -19,3 +19,15 @@ ___
 
 ## [SPRINT #5:](https://sharing.clickup.com/t/h/7hb7v4/Y2FXAOFBUHDGA1Q) :file_folder: :white_check_mark:
 
+___
+- #### *To acces the deployed application, click the given link below :arrow_down: :arrow_down: :arrow_down:*
+___
+
+## [APPLICATION:](http://front-intelli.s3-website.us-east-2.amazonaws.com/login) :computer: :white_check_mark:
+
+
+
+
+
+
+
